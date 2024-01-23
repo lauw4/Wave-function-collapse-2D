@@ -1,27 +1,46 @@
-from Land import Land
+import csv
+
+from PIL import Image
 
 
 class Tile:
-    def __init__(self,img_path,lands_):
-        self.imgPath = img_path
+    def __init__(self, name_, img_path_, lands_):
+        self.name = name_
+        self.img_path = img_path_
         self.lands = lands_
 
-    def getLand(self,side):
-        land = None
-        if side == 'N':
-            land = 0
-        elif side == 'E':
-            land = 1
-        elif side == 'S':
-            land = 2
-        elif side == 'W':
-            land = 3
+    def getLand(self, side):
+        sides = {'N': 0, 'E': 1, 'S': 2, 'W': 3}
+        land_index = sides.get(side)
+        if land_index is not None:
+            return self.lands[land_index]
+        raise ValueError("Invalid side")
 
-        if land is not None:
-            return self.lands[land]
+    def can_place_next_to(self, other_tile, side):
+        # Définir les côtés opposés
+        opposite_sides = {'N': 'S', 'E': 'W', 'S': 'N', 'W': 'E'}
 
-        raise TypeError
+        # Obtenir les attributs des côtés à comparer
+        self_side_attr = self.getLand(side)
+        other_side_attr = other_tile.getLand(opposite_sides[side])
 
-#N E S W
-Tile('', [Land.GRASS, Land.GRASS, Land.GRASS, Land.GRASS])
+        # Comparer les attributs
+        return self_side_attr == other_side_attr
 
+    def show(self):
+        try:
+            with Image.open(self.img_path) as img:
+                img.show()
+        except IOError:
+            print(f"Unable to open the image {self.img_path}")
+
+
+def read_tiles_from_csv(file_path_):
+    tiles_ = []
+    with open(file_path_, mode='r', encoding='utf-8') as file:
+        csv_reader = csv.DictReader(file)
+        for row in csv_reader:
+            lands = [row['N'], row['E'], row['S'], row['W']]
+            tile_ = Tile(row['Name'], "img/" + row['Path'], lands)
+            tiles_.append(tile_)
+    return tiles_
