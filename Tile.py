@@ -10,7 +10,10 @@ class Tile:
         self.lands = lands_
 
     def getLand(self, side):
-        sides = {'N': 0, 'E': 1, 'S': 2, 'W': 3}
+        sides = {'NW': 0, 'N': 1, 'NE': 2,
+                 'W': 3, 'C': 4, 'E': 5,
+                 'SW': 6, 'S': 7, 'SE': 8,
+                 }
         land_index = sides.get(side)
         if land_index is not None:
             return self.lands[land_index]
@@ -40,7 +43,9 @@ def read_tiles_from_csv(file_path_):
     with open(file_path_, mode='r', encoding='utf-8') as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
-            lands = [row['N'], row['E'], row['S'], row['W']]
+            lands = [row['NW'], row['N'], row['NE'],
+                     row['W'], row['C'], row['E'],
+                     row['SW'], row['S'], row['SE']]
             tile_ = Tile(row['Name'], "img/" + row['Path'], lands)
             tiles_.append(tile_)
     return tiles_
