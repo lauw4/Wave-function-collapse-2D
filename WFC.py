@@ -127,7 +127,7 @@ def run_collapse(grid, tiles, update_display_callback, delay=500, silent=True):
             return  # Fin de l'algorithme
 
         row, col = cell
-        collapse_cell(grid, row, col, tiles)
+        collapse_cell(grid, row, col)
         update_neighbors(grid, row, col, tiles)
         if not silent: update_display_callback()
         root.after(delay, collapse_step)  # Planifier la prochaine étape
