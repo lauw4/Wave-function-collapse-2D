@@ -2,8 +2,10 @@ import csv
 
 from PIL import Image
 
+from Land import Land
 
-class Tile:
+
+class OldTile:
     def __init__(self, name_, img_path_, lands_):
         self.name = name_
         self.img_path = img_path_
@@ -46,6 +48,6 @@ def read_tiles_from_csv(file_path_):
             lands = [row['NW'], row['N'], row['NE'],
                      row['W'], row['C'], row['E'],
                      row['SW'], row['S'], row['SE']]
-            tile_ = Tile(row['Name'], "img/" + row['Path'], lands)
+            tile_ = OldTile(row['Name'], "data/imgs/" + row['Path'], lands)
             tiles_.append(tile_)
     return tiles_

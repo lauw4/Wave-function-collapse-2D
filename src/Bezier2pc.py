@@ -100,9 +100,9 @@ def is_point_inside_rect(point, rect):
     return rx <= x <= rx + rw and ry <= y <= ry + rh
 
 
-grass_texture = pygame.image.load('img/grass1.png').convert()
+grass_texture = pygame.image.load('../LandsImg/grass1.png').convert()
 grass_texture = pygame.transform.scale(grass_texture, (16, 16))
-water_texture = pygame.image.load('img/water.png').convert()
+water_texture = pygame.image.load('../LandsImg/water.png').convert()
 water_texture = pygame.transform.scale(water_texture, (16, 16))
 
 start_point = select_edge_point(grid_size)

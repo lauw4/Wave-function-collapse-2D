@@ -23,7 +23,7 @@ window = pygame.display.set_mode((grid_size, grid_size))
 pygame.display.set_caption('Courbe de Bézier avec remplissage d\'image - Point de Contrôle Aléatoire')
 
 # Chargement et redimensionnement de l'image water.png
-water_texture = pygame.image.load('img/water.png').convert()
+water_texture = pygame.image.load('../LandsImg/water.png').convert()
 water_texture = pygame.transform.scale(water_texture, (16, 16))
 
 def fill_grid_with_texture(surface, points, texture):

@@ -1,7 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import random
-from Tile import read_tiles_from_csv
+from OldTile import read_tiles_from_csv
 
 
 # Fonctions de l'algorithme WFC
@@ -34,7 +34,6 @@ def find_cell_with_lowest_entropy(grid):
             if 1 < entropy < min_entropy:
                 min_entropy = entropy
                 min_cell = (row_index, col_index)
-
     return min_cell
 
 
@@ -121,10 +120,11 @@ def run_collapse(grid, tiles, update_display_callback, delay=500, silent=True):
         cell = find_cell_with_lowest_entropy(grid)
         if cell is None:
             final_images = get_final_grid_images(grid, tiles)
-            grille_finale = creer_grille(final_images, (5, 5))
+            grille_finale = creer_grille(final_images, (10, 10))
             print("finished")
-            # grille_finale.show()  # Afficher l'image finale
-            grille_finale.save("grille_finale.png")
+            grille_finale.save("out/grille_finale.png")
+            grille_finale.show()  # Afficher l'image finale
+
 
             exit(0)
 
@@ -179,8 +179,8 @@ def creer_grille(images, grille_taille):
 
 
 # Exemple d'utilisation
-tiles = read_tiles_from_csv('test2.csv')
-grid = [[set(range(len(tiles))) for _ in range(5)] for _ in range(5)]
+tiles = read_tiles_from_csv('data/test2.csv')
+grid = [[set(range(len(tiles))) for _ in range(10)] for _ in range(10)]
 
 root = tk.Tk()
 root.title("Wave Function Collapse Simulation")
