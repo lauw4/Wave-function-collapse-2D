@@ -7,7 +7,7 @@ from Tile import read_tiles_from_csv
 # Fonctions de l'algorithme WFC
 # ------------------------------
 
-def collapse_random_cell(grid, tiles):
+def collapse_random_cell(grid):
     non_collapsed_cells = [(row_index, col_index) for row_index, row in enumerate(grid)
                            for col_index, cell in enumerate(row) if len(cell) > 1]
 
@@ -38,7 +38,7 @@ def find_cell_with_lowest_entropy(grid):
     return min_cell
 
 
-def collapse_cell(grid, row, col, tiles):
+def collapse_cell(grid, row, col):
     cell = grid[row][col]
     if len(cell) == 1:
         return  # La cellule est déjà collapsée
@@ -114,7 +114,7 @@ def update_display(root, tiles, grid):
 # ------------------------------------
 
 def run_collapse(grid, tiles, update_display_callback, delay=500, silent=True):
-    if silent: delay = 0;
+    if silent: delay = 0
 
     def collapse_step():
         nonlocal grid, tiles
@@ -133,7 +133,7 @@ def run_collapse(grid, tiles, update_display_callback, delay=500, silent=True):
         root.after(delay, collapse_step)  # Planifier la prochaine étape
 
     # Collapse initial d'une cellule au hasard
-    initial_collapse = collapse_random_cell(grid, tiles)
+    initial_collapse = collapse_random_cell(grid)
     if initial_collapse is not None:
         row, col = initial_collapse
         update_neighbors(grid, row, col, tiles)
@@ -183,6 +183,6 @@ root = tk.Tk()
 root.title("Wave Function Collapse Simulation")
 
 update_display_callback = lambda: update_display(root, tiles, grid)
-run_collapse(grid, tiles, update_display_callback, silent=False)  # 500 ms de délai
+run_collapse(grid, tiles, update_display_callback, silent=True)  # 500 ms de délai
 
 root.mainloop()
