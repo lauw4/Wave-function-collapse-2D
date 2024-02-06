@@ -1,6 +1,5 @@
 Name,Path,NE,N,NW,W,C,E,SE,S,SW
 all_grass,all_grass.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS
-4cross_road,4cross_road.png,Land.GRASS,Land.ROAD,Land.GRASS,Land.ROAD,Land.GRASS,Land.ROAD,Land.GRASS,Land.ROAD,Land.GRASS
 vertical_road,vertical_road.png,Land.GRASS,Land.ROAD,Land.GRASS,Land.GRASS,Land.ROAD,Land.GRASS,Land.GRASS,Land.ROAD,Land.GRASS
 horizontal_road,horizontal_road.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.ROAD,Land.ROAD,Land.ROAD,Land.GRASS,Land.GRASS,Land.GRASS
 3cross_road_N,3cross_road_N.png,Land.GRASS,Land.ROAD,Land.GRASS,Land.ROAD,Land.ROAD,Land.ROAD,Land.GRASS,Land.GRASS,Land.GRASS
@@ -11,7 +10,3 @@ turn_road_NE,turn_road_NE.png,Land.GRASS,Land.ROAD,Land.GRASS,Land.GRASS,Land.RO
 turn_road_ES,turn_road_ES.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.ROAD,Land.ROAD,Land.GRASS,Land.ROAD,Land.GRASS
 turn_road_SW,turn_road_SW.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.ROAD,Land.ROAD,Land.GRASS,Land.GRASS,Land.ROAD,Land.GRASS
 turn_road_WN,turn_road_WN.png,Land.GRASS,Land.ROAD,Land.GRASS,Land.ROAD,Land.ROAD,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS
-deadlock_road_N,deadlock_road_N.png,Land.GRASS,Land.ROAD,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS
-deadlock_road_E,deadlock_road_E.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.ROAD,Land.GRASS,Land.GRASS,Land.GRASS
-deadlock_road_S,deadlock_road_S.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.ROAD,Land.GRASS
-deadlock_road_W,deadlock_road_W.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.ROAD,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS

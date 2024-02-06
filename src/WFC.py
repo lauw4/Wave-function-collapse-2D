@@ -1,5 +1,5 @@
 import csv
-from random import choice
+from random import choices
 from PIL import Image, ImageTk
 
 from Tile import Tile
@@ -39,7 +39,9 @@ class WFC:
         if len(cell) == 1:
             return  # La cellule est déjà collapsée
 
-        chosen_tile = choice(list(cell))
+        weights = [30 if item == 0 else 1 for item in list(cell)]  # Poids de 5 pour l'élément 0, sinon 1
+
+        chosen_tile = choices(list(cell), weights=weights, k=1)[0]
         self.grid[row][col] = {chosen_tile}
         return chosen_tile
 
@@ -64,7 +66,7 @@ class WFC:
                         if len(valid_tiles) == 1:
                             self.update_neighbors(self.grid, r, c)
 
-    def run_collapse(self, show=False):
+    def run_collapse(self, save_filepath="../out/grille_finale.png", show=False):
         while True:
             cell = self.find_cell_with_lowest_entropy()
 
@@ -72,7 +74,7 @@ class WFC:
                 final_images = self.get_final_grid_images()
                 grille_finale = self.creer_grille(final_images)
                 print("finished")
-                grille_finale.save("../out/grille_finale.png")
+                grille_finale.save(save_filepath)
                 if show:
                     grille_finale.show()
                 return
@@ -93,7 +95,7 @@ class WFC:
 
     def creer_grille(self, images):
         # Taille de chaque image et de la grille
-        taille_image = (1280, 1280)
+        taille_image = (self.grid_size[0] * 16, self.grid_size[1] * 16)
 
         # Créer une nouvelle image pour la grille
         grille = Image.new('RGB', (taille_image[0] * self.grid_size[0], taille_image[1] * self.grid_size[1]))
@@ -113,5 +115,5 @@ class WFC:
         return grille
 
 
-wfc = WFC("../data/test2.csv")
-wfc.run_collapse()
+# wfc = WFC("../data/test2.csv", grid_size=(5, 5))
+# wfc.run_collapse(show=True)

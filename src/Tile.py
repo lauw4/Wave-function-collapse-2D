@@ -3,6 +3,7 @@ class Tile:
         self.name = name_
         self.img_path = img_path_
         self.lands = lands_
+        self.lands_3x3 = [[lands_[i * 3 + j] for j in range(3)] for i in range(3)]
 
     def getLand(self, side):
         sides = {'NW': 0, 'N': 1, 'NE': 2,
