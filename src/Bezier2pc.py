@@ -16,7 +16,7 @@ def calculate_bezier_point(t, P0, P1, P2, P3):
     Calcule un point sur une courbe de Bézier cubique à un temps t donné.
     P0, P1, P2, P3 sont les points de départ, les points de contrôle et le point d'arrivée respectivement.
     """
-    return (P0 * (1 - t) ** 3 + 3 * P1 * t * (1 - t) ** 2 + 3 * P2 * (1 - t) * t ** 2 + P3 * t ** 3)
+    return P0 * (1 - t) ** 3 + 3 * P1 * t * (1 - t) ** 2 + 3 * P2 * (1 - t) * t ** 2 + P3 * t ** 3
 
 
 def generate_bezier_curve(control_points, num_points=100):
@@ -26,10 +26,10 @@ def generate_bezier_curve(control_points, num_points=100):
     points = []
     for i in range(num_points + 1):
         t = i / num_points
-        x = calculate_bezier_point(t, control_points[0][0], control_points[1][0], control_points[2][0],
-                                   control_points[3][0])
-        y = calculate_bezier_point(t, control_points[0][1], control_points[1][1], control_points[2][1],
-                                   control_points[3][1])
+        x = calculate_bezier_point(t, control_points[0][0], control_points[1][0],
+                                   control_points[2][0], control_points[3][0])
+        y = calculate_bezier_point(t, control_points[0][1], control_points[1][1],
+                                   control_points[2][1], control_points[3][1])
         points.append((int(x), int(y)))
     return points
 
@@ -60,38 +60,12 @@ def fill_grid_with_texture_and_adjacent(surface, points, texture, grid_size):
     for cell_x, cell_y in all_cells_to_fill:
         surface.blit(texture, (cell_x, cell_y))
 
-def fill_grid_with_texture(surface, points, texture):
-    """
-    Remplit les cases de la grille avec une texture basée sur les points donnés.
-    """
-    filled_cells = set()
-    for x, y in points:
-        cell_x, cell_y = x // 16 * 16, y // 16 * 16
-        if (cell_x, cell_y) not in filled_cells:
-            surface.blit(texture, (cell_x, cell_y))
-            filled_cells.add((cell_x, cell_y))
 
-
-def select_edge_point(grid_size):
-    """
-    Sélectionne un point aléatoire sur le bord de la fenêtre.
-    """
-    edge = random.choice(['top', 'bottom', 'left', 'right'])
-    if edge == 'top':
-        return random.randint(0, grid_size), 0
-    elif edge == 'bottom':
-        return random.randint(0, grid_size), grid_size
-    elif edge == 'left':
-        return 0, random.randint(0, grid_size)
-    elif edge == 'right':
-        return grid_size, random.randint(0, grid_size)
 
 
 # # Définition du bouton
 button_color = (200, 0, 0)  # Vert
-# button_position = (0, 0)  # Position du bouton dans la fenêtre
-# button_size = (64, 32)  # Taille du bouton
-# button_text = 'Reset'
+
 
 # Fonction pour dessiner le bouton
 def draw_button(surface, position, size, text):

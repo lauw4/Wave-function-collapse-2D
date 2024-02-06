@@ -39,7 +39,7 @@ class WFC:
         if len(cell) == 1:
             return  # La cellule est déjà collapsée
 
-        weights = [30 if item == 0 else 1 for item in list(cell)]  # Poids de 5 pour l'élément 0, sinon 1
+        weights = [30 if item == 0 else 1 for item in list(cell)]
 
         chosen_tile = choices(list(cell), weights=weights, k=1)[0]
         self.grid[row][col] = {chosen_tile}
