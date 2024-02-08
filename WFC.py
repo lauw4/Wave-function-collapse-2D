@@ -122,9 +122,11 @@ def run_collapse(grid, tiles, update_display_callback, delay=500, silent=True):
         if cell is None:
             final_images = get_final_grid_images(grid, tiles)
             grille_finale = creer_grille(final_images, (5, 5))
-            grille_finale.show()  # Afficher l'image finale
+            print("finished")
+            # grille_finale.show()  # Afficher l'image finale
             grille_finale.save("grille_finale.png")
-            return  # Fin de l'algorithme
+
+            exit(0)
 
         row, col = cell
         collapse_cell(grid, row, col)
@@ -143,12 +145,14 @@ def run_collapse(grid, tiles, update_display_callback, delay=500, silent=True):
 
 
 def get_final_grid_images(grid, tiles):
+
     images = []
     for row in grid:
         for cell in row:
             tile_index = next(iter(cell))  # Récupérer l'indice de la tuile
             tile_image_path = tiles[tile_index].img_path  # Récupérer le chemin de l'image de la tuile
             images.append(tile_image_path)
+    print("Images", images)
     return images
 
 
@@ -171,12 +175,11 @@ def creer_grille(images, grille_taille):
         y = (i // grille_taille[0]) * taille_image[1]
         # Placer l'image
         grille.paste(image, (x, y))
-
     return grille
 
 
 # Exemple d'utilisation
-tiles = read_tiles_from_csv('test.csv')
+tiles = read_tiles_from_csv('test2.csv')
 grid = [[set(range(len(tiles))) for _ in range(5)] for _ in range(5)]
 
 root = tk.Tk()
