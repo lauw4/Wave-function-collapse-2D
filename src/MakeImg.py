@@ -25,21 +25,24 @@ def creer_grille(images):
     return grille
 
 
-grass_path = "Grass.png"
-road_path = "Road.png"
+grass2_path = "../LandsImg/grass2.png"
+horizontal_path = "../LandsImg/horizontal_path.png"
+vertical_path = "../LandsImg/vertical_path.png"
 
 # Liste des chemins d'accès aux images
-images = [grass_path,
-          road_path,
-          grass_path,
-          grass_path,
-          grass_path,
-          grass_path,
-          grass_path,
-          grass_path,
-          grass_path,
+images = [grass2_path,
+          vertical_path,
+          grass2_path,
+
+          horizontal_path,
+          horizontal_path,
+          grass2_path,
+
+          grass2_path,
+          grass2_path,
+          grass2_path,
           ]
 
 # Créer la grille et enregistrer l'image
 image_finale = creer_grille(images)
-image_finale.save("deadlock_road_N.png")
+image_finale.save("imgs/turn_road_WN.png")

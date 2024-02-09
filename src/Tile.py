@@ -1,13 +1,9 @@
-import csv
-
-from PIL import Image
-
-
 class Tile:
     def __init__(self, name_, img_path_, lands_):
         self.name = name_
         self.img_path = img_path_
         self.lands = lands_
+        self.lands_3x3 = [[lands_[i * 3 + j] for j in range(3)] for i in range(3)]
 
     def getLand(self, side):
         sides = {'NW': 0, 'N': 1, 'NE': 2,
@@ -29,23 +25,3 @@ class Tile:
 
         # Comparer les attributs
         return self_side_attr == other_side_attr
-
-    def show(self):
-        try:
-            with Image.open(self.img_path) as img:
-                img.show()
-        except IOError:
-            print(f"Unable to open the image {self.img_path}")
-
-
-def read_tiles_from_csv(file_path_):
-    tiles_ = []
-    with open(file_path_, mode='r', encoding='utf-8') as file:
-        csv_reader = csv.DictReader(file)
-        for row in csv_reader:
-            lands = [row['NW'], row['N'], row['NE'],
-                     row['W'], row['C'], row['E'],
-                     row['SW'], row['S'], row['SE']]
-            tile_ = Tile(row['Name'], "img/" + row['Path'], lands)
-            tiles_.append(tile_)
-    return tiles_
