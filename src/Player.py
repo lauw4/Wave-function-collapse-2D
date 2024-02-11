@@ -2,9 +2,9 @@ import pygame as pg
 from character import *
 
 class Player (Character):
-    def __init__(self):
-        super().__init__()
-
+    def __init__(self, name=None, type="player", image="player_back.png", position=...):
+        super().__init__(name, type, image, position)
+        
 
 # get tile where the player is standing (Class mapp.getland) 
 # get the sides of the tile if they are road or not (y-1.map.getland)
