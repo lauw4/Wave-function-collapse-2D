@@ -19,7 +19,7 @@ class WFC:
                 lands = [row['NW'], row['N'], row['NE'],
                          row['W'], row['C'], row['E'],
                          row['SW'], row['S'], row['SE']]
-                tile_ = Tile(row['Name'], "../data/imgs/" + row['Path'], lands)
+                tile_ = Tile(row['Name'], "data/imgs/" + row['Path'], lands)
                 self.tiles.append(tile_)
 
     def find_cell_with_lowest_entropy(self):
@@ -66,7 +66,7 @@ class WFC:
                         if len(valid_tiles) == 1:
                             self.update_neighbors(self.grid, r, c)
 
-    def run_collapse(self, save_filepath="../out/grille_finale.png", show=False):
+    def run_collapse(self, save_filepath="out/grille_finale.png", show=False):
         while True:
             cell = self.find_cell_with_lowest_entropy()
 
@@ -115,5 +115,5 @@ class WFC:
         return grille
 
 
-# wfc = WFC("../data/test2.csv", grid_size=(5, 5))
+# wfc = WFC("data/test2.csv", grid_size=(5, 5))
 # wfc.run_collapse(show=True)

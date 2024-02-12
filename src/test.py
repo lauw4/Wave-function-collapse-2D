@@ -1,4 +1,5 @@
 from copy import deepcopy
+from Player import *
 
 import numpy as np
 
@@ -63,15 +64,15 @@ t_values = np.linspace(0, 1, 500)
 
 def changeWFC():
     global wfc
-    wfc = WFC.WFC("../data/test2.csv", grid_size=(n, n))
+    wfc = WFC.WFC("data/test2.csv", grid_size=(n, n))
     wfc.run_collapse()
 
 
 changeWFC()
 
-grass_textures = ["../LandsImg/grass2.png", "../LandsImg/grass2_1.png", "../LandsImg/grass2_2.png"]
-road_textures = ["../LandsImg/horizontal_path.png", "../LandsImg/vertical_path.png"]
-water_textures = ["../LandsImg/water.png"]
+grass_textures = ["LandsImg/grass2.png", "LandsImg/grass2_1.png", "LandsImg/grass2_2.png"]
+road_textures = ["LandsImg/horizontal_path.png", "LandsImg/vertical_path.png"]
+water_textures = ["LandsImg/water.png"]
 
 def changeLand(g):
     global m, lands
@@ -90,7 +91,6 @@ def changeLand(g):
                      for land in row] for row in m.land_layer]
     lands = [[pygame.image.load(path).convert() for path in row] for row in terrain_grid]
 
-
 changeLand(deepcopy(wfc))
 
 button_position = (0, 0)  # Position du bouton dans la fenêtre
@@ -100,6 +100,9 @@ button_text = 'Reset'
 button_position2 = (0 + 128, 0)  # Position du bouton dans la fenêtre
 button_size2 = (64, 32)  # Taille du bouton
 button_text2 = 'Reset'
+
+# Create the player
+wael = Player("Wael",field=m, position=(0, 0))
 
 running = True
 while running:
@@ -120,6 +123,7 @@ while running:
                  for col_index, image in enumerate(row)]
     button_rect = draw_button(window, button_position, button_size, button_text)
     button_rect2 = draw_button(window, button_position2, button_size2, button_text2)
+    wael.moveKeyboard(window)
     pygame.display.flip()
 
 pygame.quit()
