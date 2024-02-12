@@ -15,7 +15,7 @@ class Map:
 
         for i in range(self.n):
             for j in range(self.n):
-                lands_tile_3x3 = wfc.tiles[tile_grid[i][j]].lands_3x3
+                lands_tile_3x3 = wfc.tiles_[tile_grid[i][j]].lands_3x3
                 lands_tiles_3x3.append(np.array(lands_tile_3x3))
 
         self.land_layer = np.zeros(self.grid_size, dtype=object)
