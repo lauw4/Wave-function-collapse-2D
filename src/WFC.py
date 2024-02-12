@@ -8,9 +8,9 @@ from Tile import Tile
 class WFC:
     def __init__(self, tiles_file, grid_size=(10, 10)):
         self.grid_size = grid_size
-        self.tiles = []
+        self.tiles_ = []
         self.read_tiles_from_csv(tiles_file)
-        self.grid = [[set(range(len(self.tiles))) for _ in range(grid_size[1])] for _ in range(grid_size[0])]
+        self.grid = [[set(range(len(self.tiles_))) for _ in range(grid_size[1])] for _ in range(grid_size[0])]
 
     def read_tiles_from_csv(self, filename):
         with open(filename, mode='r', encoding='utf-8') as file:
@@ -19,8 +19,8 @@ class WFC:
                 lands = [row['NW'], row['N'], row['NE'],
                          row['W'], row['C'], row['E'],
                          row['SW'], row['S'], row['SE']]
-                tile_ = Tile(row['Name'], "../data/imgs/" + row['Path'], lands)
-                self.tiles.append(tile_)
+                tile_ = Tile(row['Name'], "data/imgs/" + row['Path'], lands)
+                self.tiles_.append(tile_)
 
     def find_cell_with_lowest_entropy(self):
         min_entropy = float('inf')
@@ -39,7 +39,7 @@ class WFC:
         if len(cell) == 1:
             return  # La cellule est déjà collapsée
 
-        weights = [30 if item == 0 else 1 for item in list(cell)]
+        weights = [40 if item == 0 else 1 for item in list(cell)]
 
         chosen_tile = choices(list(cell), weights=weights, k=1)[0]
         self.grid[row][col] = {chosen_tile}
@@ -57,8 +57,8 @@ class WFC:
                 neighbor_cell = self.grid[r][c]
                 if len(neighbor_cell) > 1:
                     collapse_tile = next(iter(self.grid[row][col]))  # Prendre la tuile collapsée
-                    valid_tiles = {tile for tile in neighbor_cell if self.tiles[tile].can_place_next_to
-                    (self.tiles[collapse_tile], side)}
+                    valid_tiles = {tile for tile in neighbor_cell if self.tiles_[tile].can_place_next_to
+                    (self.tiles_[collapse_tile], side)}
 
                     if len(valid_tiles) < len(neighbor_cell):
                         self.grid[r][c] = valid_tiles
@@ -66,7 +66,7 @@ class WFC:
                         if len(valid_tiles) == 1:
                             self.update_neighbors(self.grid, r, c)
 
-    def run_collapse(self, save_filepath="../out/grille_finale.png", show=False):
+    def run_collapse(self, save_filepath="out/grille_finale.png", show=False):
         while True:
             cell = self.find_cell_with_lowest_entropy()
 
@@ -89,7 +89,7 @@ class WFC:
         for row in self.grid:
             for cell in row:
                 tile_index = next(iter(cell))  # Récupérer l'indice de la tuile
-                tile_image_path = self.tiles[tile_index].img_path  # Récupérer le chemin de l'image de la tuile
+                tile_image_path = self.tiles_[tile_index].img_path  # Récupérer le chemin de l'image de la tuile
                 images.append(tile_image_path)
         return images
 

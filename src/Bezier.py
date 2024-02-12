@@ -2,7 +2,8 @@ import numpy as np
 from math import comb
 
 
-def calculate_bezier_curve(control_points, t):
+def calculate_bezier_curve(control_points):
+    t = np.linspace(0, 1, 500)
     control_points = np.array(control_points)
     n = len(control_points) - 1
     bezier_curve = np.zeros((len(t), 2))

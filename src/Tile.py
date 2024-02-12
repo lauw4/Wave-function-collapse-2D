@@ -5,7 +5,7 @@ class Tile:
         self.lands = lands_
         self.lands_3x3 = [[lands_[i * 3 + j] for j in range(3)] for i in range(3)]
 
-    def getLand(self, side):
+    def get_land(self, side):
         sides = {'NW': 0, 'N': 1, 'NE': 2,
                  'W': 3, 'C': 4, 'E': 5,
                  'SW': 6, 'S': 7, 'SE': 8,
@@ -20,8 +20,8 @@ class Tile:
         opposite_sides = {'N': 'S', 'E': 'W', 'S': 'N', 'W': 'E'}
 
         # Obtenir les attributs des côtés à comparer
-        self_side_attr = self.getLand(side)
-        other_side_attr = other_tile.getLand(opposite_sides[side])
+        self_side_attr = self.get_land(side)
+        other_side_attr = other_tile.get_land(opposite_sides[side])
 
         # Comparer les attributs
         return self_side_attr == other_side_attr
