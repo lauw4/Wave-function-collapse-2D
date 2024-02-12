@@ -5,9 +5,9 @@ from Map import *
 image_path = Path.cwd() / 'data'
 
 class Character:
-    def __init__(self, name=None, type="player", image="player_back.png", position=(0, 0)):
+    def __init__(self, name=None, image="player_back.png", position=(0, 0), field=Map()):
         self.name = name
-        self._type = type
+        self.field = field
         self.image = image_path + image
         self.position = position
 
@@ -18,14 +18,6 @@ class Character:
     @name.setter
     def name(self, value):
         self._name = value
-
-    @property
-    def type(self):
-        return self._type
-
-    @type.setter
-    def type(self, value):
-        self._type = value
 
     @property
     def position(self):
@@ -51,39 +43,55 @@ class Character:
     def y(self, value):
         self._position = (self._position[0], value)
 
-    # Function to draw the character and display them on the map
-    def draw_caracter(self, map):
+    # Function to draw the character and display them on the background_image
+    def draw_caracter(self, background_image):
         image = pg.image.load(str(image_path /'imgs'/ self.image))
         image_rect = image.get_rect(center = (self.x, self.y))
-        # Blit the character on the map from the center of the image
-        map.blit(image, image_rect)
+        # Blit the character on the background_image from the center of the image
+        background_image.blit(image, image_rect)
         pg.display.flip()
 
     # Function to redraw the Road as the player is moving 
-    def redraw_road(self,map):
+    def redraw_road(self,background_image):
         image = pg.image.load(str(image_path /'landsImg'/'vertical_path.png'))
         image_rect = image.get_rect(center = (self.x, self.y))
-        # Blit the road on the map
-        map.blit(image, image_rect)
+        # Blit the road on the background_image
+        background_image.blit(image, image_rect)
         pg.display.flip()
 
     # Functions to Move the CHARACTER
-    def move_character_up(self, map):
-        Character.redraw_road(map)
-        self.y -= 16
-        Character.draw_caracter(map)
+    def move_character_up(self, background_image):
 
-    def move_character_down(self, map):
-        Character.redraw_road(map)
-        self.y += 16
-        Character.draw_caracter(map)
+        if self.field.land_layer(self.x, self.y - 16) == "Land.HOUSE" or "Land.TREE" or "Land.WATER":
+            self.y = self.y
+        else:
+            Character.redraw_road(background_image)
+            self.y -= 16
+            Character.draw_caracter(background_image)
 
-    def move_character_left(self,map):
-        Character.redraw_road(map)
-        self.x -= 16
-        Character.draw_caracter(map)
+    def move_character_down(self, background_image):
 
-    def move_character_right(self,map):
-        Character.redraw_road(map)
-        self.x += 16
-        Character.draw_caracter(map)
+        if self.field.land_layer(self.x, self.y + 16) == "Land.HOUSE" or "Land.TREE" or "Land.WATER":
+            self.y = self.y
+        else:
+            Character.redraw_road(background_image)
+            self.y += 16
+            Character.draw_caracter(background_image)
+
+    def move_character_left(self,background_image):
+
+        if self.field.land_layer(self.x - 16, self.y) == "Land.HOUSE" or "Land.TREE" or "Land.WATER":
+            self.x = self.x
+        else:
+            Character.redraw_road(background_image)
+            self.x -= 16
+            Character.draw_caracter(background_image)
+
+    def move_character_right(self,background_image):
+
+        if self.field.land_layer(self.x + 16, self.y) == "Land.HOUSE" or "Land.TREE" or "Land.WATER":
+            self.x = self.x
+        else:
+            Character.redraw_road(background_image)
+            self.x += 16
+            Character.draw_caracter(background_image)
