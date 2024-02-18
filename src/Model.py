@@ -9,9 +9,9 @@ from src import Bezier
 
 
 class Model:
-    def __init__(self):
-        self.n = 20
-        self.grid_size = self.n * 3 * 16
+    def __init__(self, n=20):
+        self.n_ = n
+        self.grid_size = self.n_ * 3 * 16
         self.wfc = None
         self.map = None
         self.control_points = None
@@ -19,11 +19,11 @@ class Model:
         pass
 
     def runWFC(self):
-        self.wfc = WFC.WFC("data/test2.csv", grid_size=(self.n, self.n))
+        self.wfc = WFC.WFC("data/test2.csv", grid_size=(self.n_, self.n_))
         self.wfc.run_collapse()
 
     def changeLand(self):
-        self.map = Map.Map(self.n)
+        self.map = Map.Map(self.n_)
         self.map.set_land_layer(deepcopy(self.wfc))
         points = Bezier.calculate_bezier_curve(self.control_points)
         self.map.add_water(points)
