@@ -4,6 +4,7 @@ from enum import Enum
 class Land(Enum):
     GRASS = 0
     ROAD = 1
-    WATER = 2
+    CLIFF = 2
+    WATER = 3
 
 
