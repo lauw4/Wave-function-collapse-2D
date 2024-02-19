@@ -10,8 +10,7 @@ class View:
         self.grass_textures = ["LandsImg/grass2.png",
                                "LandsImg/grass2_1.png",
                                "LandsImg/grass2_2.png"]
-        self.road_textures = ["LandsImg/horizontal_path.png",
-                              "LandsImg/vertical_path.png"]
+        self.road_textures = ["LandsImg/vertical_path.png"]
         self.water_textures = ["LandsImg/water.png"]
         self.window = None
         self.lands = None

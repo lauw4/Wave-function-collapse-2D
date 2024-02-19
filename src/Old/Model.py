@@ -1,11 +1,9 @@
 import random
 from copy import deepcopy
 
-import pygame
-
 import WFC
 import Map
-from src import Bezier
+from src.Old import Bezier
 
 
 class Model:
