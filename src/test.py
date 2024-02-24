@@ -1,5 +1,5 @@
 from copy import deepcopy
-from Player import *
+from Play import *
 
 import numpy as np
 

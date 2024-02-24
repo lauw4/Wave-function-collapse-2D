@@ -11,7 +11,7 @@ class Controller:
         self.model.runWFC()
         self.model.changeLand()
         self.view.changeLand(self.model.map)
-        self.view.displayMap()
+        self.view.displayMap(self.model.map)
 
 c = Controller()
 c.run()
