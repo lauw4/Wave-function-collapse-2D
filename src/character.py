@@ -1,9 +1,10 @@
 import pygame as pg 
 
 class Character:
-    def __init__(self, name=None, position=(0, 0)):
+    def __init__(self, name=None, image="data/imgs/character_front.png", position=(0, 0)):
         self.name = name
         self.position = position
+        self.image = image
 
     @property
     def name(self):
@@ -37,8 +38,9 @@ class Character:
     def y(self, value):
         self._position = (self._position[0], value)
 
+
     # Function to redraw the Road as the player is moving 
-    def draw(seff, window, image, position):
+    def draw(self, window, image, position):
         image = pg.image.load(image)
         image_rect = image.get_rect(topleft = (position[0] * 16, position[1] * 16))
         # Blit the road on the window
@@ -47,8 +49,8 @@ class Character:
 
 
 class Player(Character):
-    def __init__(self, name=None, position=..., status=True):
-        super().__init__(name, position)
+    def __init__(self, name=None, image="data/imgs/player_front.png", position=(1,1), status=True):
+        super().__init__(name, image, position)
         self._status = status
         
     @property

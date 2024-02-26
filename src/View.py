@@ -47,10 +47,10 @@ class View:
              for row_index, row in enumerate(self.lands)
              for col_index, image in enumerate(row)]
             
-            print(f" map: {map.land_layer[5][5]}")
-            self.game.model.character.draw(self.window, "data/imgs/player_front.png", (5, 5))
-            self.game.moveCharacter(self.window,map)
-
-            time.sleep(2)
-
+            # Moving the Player and the AI character
+            self.game.moveKeyboard(self.window, map)
+            self.game.moveCharacter(self.window, map)
+            # Flip the Display of the game
             pygame.display.flip()
+            # Smoothing the transactions
+            pygame.time.Clock().tick(5)

@@ -5,88 +5,103 @@ import random
 class Game:
     def __init__(self):
         self.model = Model()
-        
+        # Images for the Player
         self.player_textures = ["data/imgs/player_right.png", 
                                 "data/imgs/player_left.png", 
                                 "data/imgs/player_back.png", 
                                 "data/imgs/player_front.png"]
-        
-        self.character_textures = ["data/imgs/"]
+        # Images for the character
+        self.character_textures = ["data/imgs/character_right.png",
+                                   "data/imgs/character_left.png",
+                                   "data/imgs/character_back.png",
+                                   "data/imgs/character_front.png"]
 
     def moveCharacter(self, window, map):
-        
         positions = self.model.ai_characters_movements(map)
         print(f'Positions:{positions}')
 
-        if positions is not None and positions:
+        if positions:
             turn = random.choice(positions)
             print(f'chosen:{turn}')
-            print(f'Positions:{positions}')
 
-            if turn == "up":
-                self.model.character.y += 1
-                self.model.character.draw(window, self.player_textures[2], (self.model.character.x, self.model.character.y))
-            elif turn == "down":
+            if turn == "N":
                 self.model.character.y -= 1
-                self.model.character.draw(window, self.player_textures[3], (self.model.character.x, self.model.character.y))
-            elif turn == "left":
+                self.model.character.image = self.character_textures[2]
+            elif turn == "S":
+                self.model.character.y += 1
+                self.model.character.image = self.character_textures[3]
+            elif turn == "W":
                 self.model.character.x -= 1
-                self.model.character.draw(window, self.player_textures[1], (self.model.character.x, self.model.character.y))
-            elif turn == "right":
+                self.model.character.image = self.character_textures[1]
+            elif turn == "E":
                 self.model.character.x += 1
-                self.model.character.draw(window, self.player_textures[0], (self.model.character.x, self.model.character.y))
-            else:
-                print("no direction")
+                self.model.character.image = self.character_textures[0]
+            elif turn == "NW":
+                self.model.character.x -= 1
+                self.model.character.y -= 1
+                self.model.character.image = self.character_textures[2]
+            elif turn == "NE":
+                self.model.character.x += 1
+                self.model.character.y -= 1
+                self.model.character.image = self.character_textures[2]
+            elif turn == "SW":
+                self.model.character.x -= 1
+                self.model.character.y += 1
+                self.model.character.image = self.character_textures[3]
+            elif turn == "SE":
+                self.model.character.x += 1
+                self.model.character.y += 1
+                self.model.character.image = self.character_textures[3]
 
+            # Draw the character after updating its position
+            self.model.character.draw(window, self.model.character.image, (self.model.character.x, self.model.character.y))
         else:
             print("the position is None or empty")
 
-    def movePlayer(self, turn):
-        positions = self.model.player_movements()
-        if positions is not None:
-            if turn in positions:
-                if turn == "up":
-                    self.model.player.y += 1
-                    return (self.model.player.x, self.model.player.y)
-                elif turn == "down":
-                    self.model.player.y -= 1
-                    return (self.model.player.x, self.model.player.y)
-                elif turn == "left":
+
+   # Function for moving the Player as the direction keys are pressed 
+    def moveKeyboard(self, window, map):
+        # get possible movements direction the player can make
+        player_positions = self.model.player_movements(map)
+        print(f'Player possible Positions:{player_positions}')
+        self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
+        if player_positions:
+            keys = pg.key.get_pressed()
+            if keys[pg.K_LEFT]:
+                if "W" in player_positions:
+                    print("left pressed")
                     self.model.player.x -= 1
-                    return (self.model.player.x, self.model.player.y)
-                elif turn == "right":
+                    self.model.player.image = self.player_textures[1]
+                    self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
+                else:
+                    print("Zone inaccessible")
+
+            elif keys[pg.K_RIGHT]:
+                if "E" in player_positions:
+                    print("right pressed")
                     self.model.player.x += 1
-                    return (self.model.player.x, self.model.player.y)
+                    self.model.player.image = self.player_textures[0]
+                    self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
                 else:
-                    print("no direction")
-            else:
-                print("The chosen direction is not accessible")
+                    print("Zone inaccessible")
+
+            elif keys[pg.K_UP]:
+                if "N" in player_positions:
+                    print("up pressed")
+                    self.model.player.y -= 1
+                    self.model.player.image = self.player_textures[2]
+                    self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
+                else:
+                    print("Zone inaccessible")
+
+            elif keys[pg.K_DOWN]:
+                if "S" in player_positions:
+                    print("down pressed")
+                    self.model.player.y += 1
+                    self.model.player.image = self.player_textures[3]
+                    self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
+                else:
+                    print("Zone inaccessible")
         else:
-            print("the position is None")
-
-    # Function for moving the Player as the direction keys are pressed 
-    def moveKeyboard(self, window):
-        # Listen to Events with pygame
-        for event in pg.event.get():
-            # Listern for a Key press among the events
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_LEFT:
-                    # move the character in the direction of the key pressed
-                    position = self.movePlayer("left")
-                    self.model.character.draw(window, self.player_textures[1], position)
-                elif event.key == pg.K_RIGHT:
-                    # move the character in the direction of the key pressed
-                    position =self.movePlayer("right")
-                    self.model.character.draw(window, self.player_textures[0], position)
-                elif event.key == pg.K_UP:
-                    # move the character in the direction of the key pressed
-                    position =self.movePlayer("up")
-                    self.model.character.draw(window, self.player_textures[2], position)
-                elif event.key == pg.K_DOWN:
-                    # move the character in the direction of the key pressed
-                    position =self.movePlayer("down")
-                    self.model.character.draw(window, self.player_textures[3], position)
-                else:
-                    # In case you haven't pressed on the arrow buttons
-                    print("Use the Direction keys / arrow keys") 
-
+            # In case you haven't pressed on the arrow buttons
+            print("Use the Direction keys / arrow keys")
