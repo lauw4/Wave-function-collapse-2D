@@ -13,7 +13,7 @@ class Controller:
 
         self.model.map.set_land_layer(self.model.wfc)
         self.view.changeLand(self.model)
-        self.view.displayMap()
+        self.view.displayMap(self.model.map)
 
 
 c = Controller()
