@@ -1,0 +1,15 @@
+Name,Path,N,E,S,W,NW,NE,SW,SE
+corner_cliff_ES,corner_cliff_ES.png,Land.WATER,Land.CLIFF,Land.CLIFF,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.GRASS
+corner_cliff_NE,corner_cliff_NE.png,Land.CLIFF,Land.CLIFF,Land.WATER,Land.WATER,Land.WATER,Land.GRASS,Land.WATER,Land.WATER
+corner_cliff_SW,corner_cliff_SW.png,Land.WATER,Land.WATER,Land.CLIFF,Land.CLIFF,Land.WATER,Land.WATER,Land.GRASS,Land.WATER
+corner_cliff_WN,corner_cliff_WN.png,Land.CLIFF,Land.WATER,Land.WATER,Land.CLIFF,Land.GRASS,Land.WATER,Land.WATER,Land.WATER
+cliff_W,cliff_W.png,Land.CLIFF,Land.GRASS,Land.CLIFF,Land.WATER,Land.WATER,Land.GRASS,Land.WATER,Land.GRASS
+cliff_N,cliff_N.png,Land.WATER,Land.CLIFF,Land.GRASS,Land.CLIFF,Land.WATER,Land.WATER,Land.GRASS,Land.GRASS
+cliff_S,cliff_S.png,Land.GRASS,Land.CLIFF,Land.WATER,Land.CLIFF,Land.GRASS,Land.GRASS,Land.WATER,Land.WATER
+cliff_E,cliff_E.png,Land.CLIFF,Land.WATER,Land.CLIFF,Land.GRASS,Land.GRASS,Land.WATER,Land.GRASS,Land.WATER
+turn_cliff_ES,turn_cliff_ES.png,Land.CLIFF,Land.GRASS,Land.GRASS,Land.CLIFF,Land.WATER,Land.GRASS,Land.GRASS,Land.GRASS
+turn_cliff_NE,turn_cliff_NE.png,Land.GRASS,Land.GRASS,Land.CLIFF,Land.CLIFF,Land.GRASS,Land.GRASS,Land.WATER,Land.GRASS
+turn_cliff_SW,turn_cliff_SW.png,Land.CLIFF,Land.CLIFF,Land.GRASS,Land.GRASS,Land.GRASS,Land.WATER,Land.GRASS,Land.GRASS
+turn_cliff_WN,turn_cliff_WN.png,Land.GRASS,Land.CLIFF,Land.CLIFF,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.WATER
+grass,grass.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS
+water,water.png,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.WATER
