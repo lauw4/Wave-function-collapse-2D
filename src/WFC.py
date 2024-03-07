@@ -2,7 +2,7 @@ import csv
 from random import choices
 from PIL import Image
 
-from src.River.Tile2 import Tile2
+from src.Tile import Tile2
 
 class WFC2:
     def __init__(self, tiles_file, grid_size=(10, 10)):
@@ -17,7 +17,7 @@ class WFC2:
             for row in csv_reader:
                 lands = [row['N'], row['W'], row['E'], row['S'],
                          row['NW'], row['NE'], row['SW'], row['SE']]
-                tile_ = Tile2(row['Name'], "data/imgs2/" + row['Path'], lands)
+                tile_ = Tile2(row['Name'], "LandsImg/" + row['Path'], lands)
                 self.tiles_.append(tile_)
 
     def find_cell_with_lowest_entropy(self):
