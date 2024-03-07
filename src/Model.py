@@ -19,14 +19,10 @@ class Model:
         self.map = Map(self.n_)
         self.num_points = None
         self.control_points = None
-        self.getControlPoints()
-        self.characters = [Character(), Character(position=(15, 40)), Character(position=(25, 25)), Character(position=(50, 45))]
+        self.characters = [Character(), Character(position=(15, 40)), Character(position=(25, 25)),
+                           Character(position=(50, 45))]
         self.player = Player()
-        pass
 
-    def runWFC(self):
-        self.wfc = WFC.WFC("data/test2.csv", grid_size=(self.n, self.n))
-        self.wfc.run_collapse()
         self.curve = None
         self.init_curve()
 
@@ -47,18 +43,18 @@ class Model:
 
     def ai_characters_movements(self, map, character):
         directions = []
-        if map is not None and map.land_layer is not None:
+        if map is not None:
             x = character.x
             y = character.y
-            if 0 <= x < len(map.land_layer) and 0 <= y < len(map.land_layer[0]):
+            if 0 <= x < len(map) and 0 <= y < len(map[0]):
                 # Check each of the eight neighboring cells
                 for dx in [-1, 0, 1]:
                     for dy in [-1, 0, 1]:
                         if dx != 0 or dy != 0:  # Skip the current cell
                             new_x = x + dx
                             new_y = y + dy
-                            if 0 <= new_x < len(map.land_layer) and 0 <= new_y < len(map.land_layer[0]):
-                                if map.land_layer[new_x][new_y] in ["Land.GRASS", "Land.ROAD"]:
+                            if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
+                                if map[new_x][new_y] in [{12},{42}]:
                                     # Determine the direction based on the relative position
                                     direction = ""
                                     if dx == -1 and dy == 0:
@@ -81,21 +77,29 @@ class Model:
 
         return directions
 
-
-
     # Functions to give possible movements of the CHARACTER
     def player_movements(self, map):
         player_directions = []
-        if map is not None and map.land_layer is not None:
+        if map is not None:
+
+            for i in range(1):
+                for j in range(1):
+                    print(map[i][j])
+
             x = self.player.x
             y = self.player.y
-            if 0 <= x < len(map.land_layer) and 0 <= y < len(map.land_layer[0]):
+            if 0 <= x < len(map) and 0 <= y < len(map[0]):
                 # Check each of the four neighboring cells: N, S, W, E
                 for dx, dy in [(0, -1), (0, 1), (-1, 0), (1, 0)]:
                     new_x = x + dx
                     new_y = y + dy
-                    if 0 <= new_x < len(map.land_layer) and 0 <= new_y < len(map.land_layer[0]):
-                        if map.land_layer[new_x][new_y] in ["Land.GRASS", "Land.ROAD"]:
+
+                    print(f"""nx : {new_x}, ny : {new_y}""")
+
+                    if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
+                        print(f"""test : {map[new_x][new_y]}""")
+                        if map[new_x][new_y] in [{12},{42}]:
+                            print(2)
                             # Determine the direction based on the relative position
                             direction = ""
                             if dx == 0 and dy == -1:
@@ -109,4 +113,3 @@ class Model:
                             player_directions.append(direction)
 
         return player_directions
-

@@ -20,11 +20,11 @@ class Game:
 
         for character in self.model.characters:
             positions = self.model.ai_characters_movements(map, character)
-            print(f'Positions:{positions}')
+            # print(f'Positions:{positions}')
 
             if positions:
                 turn = random.choice(positions)
-                print(f'chosen:{turn}')
+                # print(f'chosen:{turn}')
                 if turn == "N":
                     character.y -= 1
                     character.image = self.character_textures[2]
@@ -55,15 +55,15 @@ class Game:
                     character.image = self.character_textures[3]
                 # Draw the character after updating its position
                 character.draw(window, character.image, (character.x, character.y))
-            else:
-                print("the position is None or empty")
+            # else:
+            #     print("the position is None or empty")
 
 
    # Function for moving the Player as the direction keys are pressed 
     def moveKeyboard(self, window, map):
         # get possible movements direction the player can make
         player_positions = self.model.player_movements(map)
-        print(f'Player possible Positions:{player_positions}')
+        # print(f'Player possible Positions:{player_positions}')
         self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
         if player_positions:
             keys = pg.key.get_pressed()
