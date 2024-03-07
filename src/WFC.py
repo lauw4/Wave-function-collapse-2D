@@ -1,3 +1,4 @@
+#WFC.py
 import csv
 from random import choices
 from PIL import Image, ImageTk
@@ -71,12 +72,12 @@ class WFC:
             cell = self.find_cell_with_lowest_entropy()
 
             if cell is None:
-                final_images = self.get_final_grid_images()
-                grille_finale = self.creer_grille(final_images)
-                print("finished")
-                grille_finale.save(save_filepath)
-                if show:
-                    grille_finale.show()
+                #final_images = self.get_final_grid_images()
+                #grille_finale = self.creer_grille(final_images)
+                #print("finished")
+                #grille_finale.save(save_filepath)
+                #if show:
+                    #grille_finale.show()
                 return
 
             row, col = cell
@@ -115,5 +116,5 @@ class WFC:
         return grille
 
 
-# wfc = WFC("../data/test2.csv", grid_size=(5, 5))
+# wfc = WFC("../data/test2.csv", grid_size= (5, 5))
 # wfc.run_collapse(show=True)

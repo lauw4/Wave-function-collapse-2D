@@ -34,5 +34,5 @@ def decouper_image(source, taille_segment=(16, 16)):
 
 
 # Exemple d'utilisation
-source = 'Cliff-Water.png'  # Remplacez par le chemin de votre image
+source = 'Trees.png'  # Remplacez par le chemin de votre image
 decouper_image(source)
