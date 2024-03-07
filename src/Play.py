@@ -63,7 +63,7 @@ class Game:
     def moveKeyboard(self, window, map):
         # get possible movements direction the player can make
         player_positions = self.model.player_movements(map)
-        # print(f'Player possible Positions:{player_positions}')
+        print(f'Player possible Positions:{player_positions}')
         self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
         if player_positions:
             keys = pg.key.get_pressed()

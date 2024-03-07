@@ -10,16 +10,21 @@ class View:
         self.grass_textures = ["LandsImg/grass2.png",
                                "LandsImg/grass2_1.png",
                                "LandsImg/grass2_2.png"]
+        
         self.road_textures = ["LandsImg/vertical_path.png"]
+        
         self.water_textures = ["LandsImg/water.png"]
+        
         self.corner_cliff_ES_textures = ["LandsImg/corner_cliff_ES.png"]
         self.corner_cliff_NE_textures = ["LandsImg/corner_cliff_NE.png"]
         self.corner_cliff_SW_textures = ["LandsImg/corner_cliff_SW.png"]
         self.corner_cliff_WN_textures = ["LandsImg/corner_cliff_WN.png"]
+        
         self.cliff_W_textures = ["LandsImg/cliff_W.png"]
         self.cliff_N_textures = ["LandsImg/cliff_N.png"]
         self.cliff_S_textures = ["LandsImg/cliff_S.png"]
         self.cliff_E_textures = ["LandsImg/cliff_E.png"]
+        
         self.turn_cliff_ES_textures = ["LandsImg/turn_cliff_ES.png"]
         self.turn_cliff_NE_textures = ["LandsImg/turn_cliff_NE.png"]
         self.turn_cliff_SW_textures = ["LandsImg/turn_cliff_SW.png"]
@@ -29,7 +34,7 @@ class View:
         self.lands = None
         self.game = Game()
         pygame.init()
-        self.window = pygame.display.set_mode((30 * 16, 30 * 16))
+        self.window = pygame.display.set_mode((50 * 16, 50 * 16))
         pygame.display.set_caption('WFC Test')
 
     def changeLand(self, m):
