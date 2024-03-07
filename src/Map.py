@@ -16,3 +16,4 @@ class Map:
         for i in range(self.n):
             for j in range(self.n):
                 self.land_layer[i, j] = wfc.tiles_[tile_grid[i][j]]
+
