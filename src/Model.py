@@ -54,7 +54,7 @@ class Model:
                             new_x = x + dx
                             new_y = y + dy
                             if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
-                                if map[new_x][new_y] in [{12},{42}]:
+                                if map[new_y][new_x] in [{12},{42}]:
                                     # Determine the direction based on the relative position
                                     direction = ""
                                     if dx == -1 and dy == 0:
@@ -97,8 +97,8 @@ class Model:
                     print(f"""nx : {new_x}, ny : {new_y}""")
 
                     if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
-                        print(f"""test : {map[new_x][new_y]}""")
-                        if map[new_x][new_y] in [{12},{42}]:
+                        print(f"""test : {map[new_y][new_x]}""")
+                        if map[new_y][new_x] in [{12},{42}]:
                             print(2)
                             # Determine the direction based on the relative position
                             direction = ""
