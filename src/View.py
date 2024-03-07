@@ -2,7 +2,6 @@ import random
 from Model import Model
 from Play import Game
 import pygame
-import time
 
 
 class View:

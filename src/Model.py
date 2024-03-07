@@ -39,9 +39,11 @@ class Model:
 
     def ai_characters_movements(self, map, character):
         directions = []
+
         if map is not None:
             x = character.x
             y = character.y
+        
             if 0 <= x < len(map) and 0 <= y < len(map[0]):
                 # Check each of the eight neighboring cells
                 for dx in [-1, 0, 1]:
@@ -91,7 +93,6 @@ class Model:
                     if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
                         
                         if map[new_y][new_x] in [{12},{42}]:
-                            print(2)
                             # Determine the direction based on the relative position
                             direction = ""
                             if dx == 0 and dy == -1:

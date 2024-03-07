@@ -1,7 +1,6 @@
 import csv
 from random import choices
 from PIL import Image
-
 from Tile import Tile2
 
 class WFC2:
