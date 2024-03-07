@@ -105,3 +105,9 @@ class Game:
         else:
             # In case you haven't pressed on the arrow buttons
             print("Use the Direction keys / arrow keys")
+
+    # function to remove the player if meets a character
+    def delete_player_in_contact(self):
+        if self.model.player.x == self.model.character.x and self.model.player.y == self.model.character.y:
+            self.model.player.status = False
+            print("You Lost")

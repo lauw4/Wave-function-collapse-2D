@@ -48,9 +48,12 @@ class View:
              for col_index, image in enumerate(row)]
             
             # Moving the Player and the AI character
-            self.game.moveKeyboard(self.window, map)
+            if self.game.model.player.status:
+                self.game.moveKeyboard(self.window, map)
+        
             self.game.moveCharacter(self.window, map)
+            self.game.delete_player_in_contact()
             # Flip the Display of the game
             pygame.display.flip()
             # Smoothing the transactions
-            pygame.time.Clock().tick(5)
+            pygame.time.Clock().tick(7.5)

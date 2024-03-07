@@ -1,7 +1,7 @@
 import pygame as pg 
 
 class Character:
-    def __init__(self, name=None, image="data/imgs/character_front.png", position=(0, 0)):
+    def __init__(self, name=None, image="data/imgs/character_front.png", position=(5, 5)):
         self.name = name
         self.position = position
         self.image = image
