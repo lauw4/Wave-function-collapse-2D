@@ -1,6 +1,6 @@
-from src.Map import Map
-from src.WFC import WFC2
-import src.Bezier as bz
+from Map import Map
+from WFC import WFC2
+import Bezier as bz
 
 
 class Model:
