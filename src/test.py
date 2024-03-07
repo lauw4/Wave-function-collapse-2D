@@ -1,4 +1,3 @@
-# test.py
 from copy import deepcopy
 import numpy as np
 from pygame.locals import *
@@ -15,6 +14,7 @@ from Tree import Tree
 from Prop import Prop
 import os
 from WFC import WFC
+from src.Model import Model
 
 button_color = (200, 0, 0)  # Vert
 
@@ -87,6 +87,7 @@ for path in road_textures:
     print("Tree image path:", path)
 for path in water_textures:
     print("Tree image path:", path)
+
 def changeLand(g):
     global m, lands, trees
     m = Map(n)
@@ -169,4 +170,6 @@ while running:
     button_rect = draw_button(window, button_position, button_size, button_text)
     button_rect2 = draw_button(window, button_position2, button_size2, button_text2)
     pygame.display.flip()
+
 pygame.quit()
+
