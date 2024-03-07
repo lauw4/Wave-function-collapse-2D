@@ -16,7 +16,7 @@ class Model:
         self.map = Map.Map(self.n)
         self.control_points = None
         self.getControlPoints()
-        self.character = Character()
+        self.characters = [Character(), Character(position=(15, 40)), Character(position=(25, 25)), Character(position=(50, 45))]
         self.player = Player()
         pass
 
@@ -58,11 +58,11 @@ class Model:
         self.control_points.insert(0, start_point)
         self.control_points.append(end_point)
 
-    def ai_characters_movements(self, map):
+    def ai_characters_movements(self, map, character):
         directions = []
         if map is not None and map.land_layer is not None:
-            x = self.character.x
-            y = self.character.y
+            x = character.x
+            y = character.y
             if 0 <= x < len(map.land_layer) and 0 <= y < len(map.land_layer[0]):
                 # Check each of the eight neighboring cells
                 for dx in [-1, 0, 1]:
@@ -93,7 +93,6 @@ class Model:
                                     directions.append(direction)
 
         return directions
-
 
     
     # Functions to give possible movements of the CHARACTER

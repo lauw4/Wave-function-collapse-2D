@@ -17,46 +17,46 @@ class Game:
                                    "data/imgs/character_front.png"]
 
     def moveCharacter(self, window, map):
-        positions = self.model.ai_characters_movements(map)
-        print(f'Positions:{positions}')
 
-        if positions:
-            turn = random.choice(positions)
-            print(f'chosen:{turn}')
+        for character in self.model.characters:
+            positions = self.model.ai_characters_movements(map, character)
+            print(f'Positions:{positions}')
 
-            if turn == "N":
-                self.model.character.y -= 1
-                self.model.character.image = self.character_textures[2]
-            elif turn == "S":
-                self.model.character.y += 1
-                self.model.character.image = self.character_textures[3]
-            elif turn == "W":
-                self.model.character.x -= 1
-                self.model.character.image = self.character_textures[1]
-            elif turn == "E":
-                self.model.character.x += 1
-                self.model.character.image = self.character_textures[0]
-            elif turn == "NW":
-                self.model.character.x -= 1
-                self.model.character.y -= 1
-                self.model.character.image = self.character_textures[2]
-            elif turn == "NE":
-                self.model.character.x += 1
-                self.model.character.y -= 1
-                self.model.character.image = self.character_textures[2]
-            elif turn == "SW":
-                self.model.character.x -= 1
-                self.model.character.y += 1
-                self.model.character.image = self.character_textures[3]
-            elif turn == "SE":
-                self.model.character.x += 1
-                self.model.character.y += 1
-                self.model.character.image = self.character_textures[3]
-
-            # Draw the character after updating its position
-            self.model.character.draw(window, self.model.character.image, (self.model.character.x, self.model.character.y))
-        else:
-            print("the position is None or empty")
+            if positions:
+                turn = random.choice(positions)
+                print(f'chosen:{turn}')
+                if turn == "N":
+                    character.y -= 1
+                    character.image = self.character_textures[2]
+                elif turn == "S":
+                    character.y += 1
+                    character.image = self.character_textures[3]
+                elif turn == "W":
+                    character.x -= 1
+                    character.image = self.character_textures[1]
+                elif turn == "E":
+                    character.x += 1
+                    character.image = self.character_textures[0]
+                elif turn == "NW":
+                    character.x -= 1
+                    character.y -= 1
+                    character.image = self.character_textures[2]
+                elif turn == "NE":
+                    character.x += 1
+                    character.y -= 1
+                    character.image = self.character_textures[2]
+                elif turn == "SW":
+                    character.x -= 1
+                    character.y += 1
+                    character.image = self.character_textures[3]
+                elif turn == "SE":
+                    character.x += 1
+                    character.y += 1
+                    character.image = self.character_textures[3]
+                # Draw the character after updating its position
+                character.draw(window, character.image, (character.x, character.y))
+            else:
+                print("the position is None or empty")
 
 
    # Function for moving the Player as the direction keys are pressed 
@@ -108,6 +108,7 @@ class Game:
 
     # function to remove the player if meets a character
     def delete_player_in_contact(self):
-        if self.model.player.x == self.model.character.x and self.model.player.y == self.model.character.y:
-            self.model.player.status = False
-            print("You Lost")
+        for character in self.model.characters:
+            if self.model.player.x == character.x and self.model.player.y == character.y:
+                self.model.player.status = False
+                print("You Lost")

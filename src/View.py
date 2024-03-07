@@ -50,7 +50,7 @@ class View:
             # Moving the Player and the AI character
             if self.game.model.player.status:
                 self.game.moveKeyboard(self.window, map)
-        
+                
             self.game.moveCharacter(self.window, map)
             self.game.delete_player_in_contact()
             # Flip the Display of the game
