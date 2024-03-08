@@ -6,9 +6,10 @@ from character import *
 import WFC
 import Map
 import Bezier
-from Map import Map
-from WFC import WFC2
-import Bezier as bz
+from src.Map import Map
+from Tree import Tree
+from src.WFC import WFC2
+import src.Bezier as bz
 
 
 class Model:
@@ -25,6 +26,8 @@ class Model:
 
         self.curve = None
         self.init_curve()
+
+        self.trees = []
 
     def init_curve(self):
         self.num_points = 100
@@ -54,7 +57,7 @@ class Model:
                             new_x = x + dx
                             new_y = y + dy
                             if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
-                                if map[new_x][new_y] in [{12},{42}]:
+                                if map[new_y][new_x] in [{12}, {42}]:
                                     # Determine the direction based on the relative position
                                     direction = ""
                                     if dx == -1 and dy == 0:
@@ -97,8 +100,8 @@ class Model:
                     print(f"""nx : {new_x}, ny : {new_y}""")
 
                     if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
-                        print(f"""test : {map[new_x][new_y]}""")
-                        if map[new_x][new_y] in [{12},{42}]:
+                        print(f"""test : {map[new_y][new_x]}""")
+                        if map[new_y][new_x] in [{12}, {42}]:
                             print(2)
                             # Determine the direction based on the relative position
                             direction = ""
@@ -113,3 +116,12 @@ class Model:
                             player_directions.append(direction)
 
         return player_directions
+
+    def addTrees(self):
+        for row_index, row in enumerate(self.wfc.grid):
+            for col_index, cell in enumerate(row):
+                if cell == {12}:
+                    if random.random() < 0.5:
+                        tree = Tree(position=(col_index, row_index))
+                        self.trees.append(tree)
+                        print("Tree added at:", tree.position)

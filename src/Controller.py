@@ -9,6 +9,7 @@ class Controller:
 
     def run(self):
         self.model.add_water()
+        self.model.addTrees()
         self.model.wfc.run_collapse()
 
         self.model.map.set_land_layer(self.model.wfc)
