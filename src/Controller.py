@@ -9,19 +9,11 @@ class Controller:
 
     def run(self):
         self.model.add_water()
-        self.model.addTrees()
         self.model.wfc.run_collapse()
-
         self.model.map.set_land_layer(self.model.wfc)
+        self.model.addTrees(self.model.wfc.grid)
         self.view.changeLand(self.model)
-
-        for i in range(30):
-            for j in range(30):
-                print(self.model.wfc.grid[i][j])
-            print('\n')
-
-        self.view.displayMap(self.model.wfc.grid)
-
+        self.view.displayMap(self.model)
 
 c = Controller()
 c.run()

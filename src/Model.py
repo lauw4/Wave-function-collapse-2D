@@ -6,10 +6,10 @@ from character import *
 import WFC
 import Map
 import Bezier
-from src.Map import Map
+from Map import Map
 from Tree import Tree
-from src.WFC import WFC2
-import src.Bezier as bz
+from WFC import WFC2
+import Bezier as bz
 
 
 class Model:
@@ -117,11 +117,12 @@ class Model:
 
         return player_directions
 
-    def addTrees(self):
-        for row_index, row in enumerate(self.wfc.grid):
+    def addTrees(self, map):
+        for row_index, row in enumerate(map):
             for col_index, cell in enumerate(row):
                 if cell == {12}:
                     if random.random() < 0.5:
                         tree = Tree(position=(col_index, row_index))
                         self.trees.append(tree)
-                        print("Tree added at:", tree.position)
+        return self.trees
+

@@ -24,10 +24,12 @@ class View:
         self.turn_cliff_NE_textures = ["LandsImg/turn_cliff_NE.png"]
         self.turn_cliff_SW_textures = ["LandsImg/turn_cliff_SW.png"]
         self.turn_cliff_WN_textures = ["LandsImg/turn_cliff_WN.png"]
+        self.tree_textures = ["./data/imgs/props/trees_status/tree1.png"]
 
         self.window = None
         self.lands = None
         self.game = Game()
+        self.model = Model()
         pygame.init()
         self.window = pygame.display.set_mode((30 * 16, 30 * 16))
         pygame.display.set_caption('WFC Test')
@@ -54,8 +56,8 @@ class View:
 
         self.lands = [[pygame.image.load(path).convert() for path in row] for row in terrain_grid]
 
-    def displayMap(self,map):
-
+    def displayMap(self,model):
+        map = model.wfc.grid
         running = True
         while running:
             for event in pygame.event.get():
@@ -65,7 +67,11 @@ class View:
             [self.window.blit(image, (col_index * 16, row_index * 16))
              for row_index, row in enumerate(self.lands)
              for col_index, image in enumerate(row)]
-
+            
+            
+            for tree in model.trees:
+                tree.draw(self.window, self.tree_textures[0], (tree.x, tree.y))
+            
             # Moving the Player and the AI character
             if self.game.model.player.status:
                 self.game.moveKeyboard(self.window, map)

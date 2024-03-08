@@ -3,7 +3,7 @@ import numpy as np
 from pygame.locals import *
 import Bezier
 import Tools
-from WFC import WFC
+from WFC import WFC2
 import pygame
 import random
 from Bezier import calculate_bezier_curve
@@ -13,8 +13,7 @@ from Map import Map
 from Tree import Tree
 from Prop import Prop
 import os
-from WFC import WFC
-from src.Model import Model
+from Model import Model
 
 button_color = (200, 0, 0)  # Vert
 
@@ -67,7 +66,7 @@ t_values = np.linspace(0, 1, 500)
 
 def changeWFC():
     global wfc
-    wfc = WFC("data/test2.csv", grid_size=(n, n))
+    wfc = WFC2("data/test2.csv", grid_size=(n, n))
     wfc.run_collapse()
 
 
@@ -76,8 +75,8 @@ changeWFC()
 grass_textures = ["LandsImg/grass2.png", "LandsImg/grass2_1.png", "LandsImg/grass2_2.png"]
 road_textures = ["LandsImg/horizontal_path.png", "LandsImg/vertical_path.png"]
 water_textures = ["LandsImg/water.png"]
-trunk_images = ["C:/Users/Waele/PycharmProjects/Wave-function-collapse-2D/data/imgs/props/trees_status/tree1.png", "C:/Users/Waele/PycharmProjects/Wave-function-collapse-2D/data/imgs/props/trees_status/tree2.png",
-                "C:/Users/Waele/PycharmProjects/Wave-function-collapse-2D/data/imgs/props/trees_status/tree3.png", "C:/Users/Waele/PycharmProjects/Wave-function-collapse-2D/data/imgs/props/trees_status/tree_cut.png"]
+trunk_images = ["/data/imgs/props/trees_status/tree1.png", "/data/imgs/props/trees_status/tree2.png",
+                "/data/imgs/props/trees_status/tree3.png", "/data/imgs/props/trees_status/tree_cut.png"]
 
 for path in trunk_images:
     print("Tree image path:", path)

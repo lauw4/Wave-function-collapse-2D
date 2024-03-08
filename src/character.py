@@ -45,7 +45,6 @@ class Character:
         image_rect = image.get_rect(topleft = (position[0] * 16, position[1] * 16))
         # Blit the road on the window
         window.blit(image, image_rect)
-        pg.display.flip()
 
 
 class Player(Character):
