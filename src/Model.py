@@ -5,15 +5,27 @@ import pygame
 from character import *
 import WFC
 import Map
-import Bezier
 from Map import Map
 from Tree import Tree
 from WFC import WFC2
 import Bezier as bz
+from House import House
 
 
 class Model:
     def __init__(self, n=20):
+
+        self.tree_textures = ["./data/imgs/props/trees_status/tree1.png",
+                              "./data/imgs/props/trees_status/tree2.png",
+                              "./data/imgs/props/trees_status/tree3.png",
+                              "./data/imgs/props/trees_status/tree_cut.png"]
+        self.house_textures = ["./data/imgs/props/houses_status/house1.png",
+                               "./data/imgs/props/houses_status/house2.png",
+                               "./data/imgs/props/houses_status/house3.png",
+                               "./data/imgs/props/houses_status/house4.png",
+                               "./data/imgs/props/houses_status/house5.png",
+                               "./data/imgs/props/houses_status/house6.png"]
+
         self.n_ = n
         self.grid_size = (n, n)
         self.wfc = WFC2("data/test3.csv", self.grid_size)
@@ -28,6 +40,7 @@ class Model:
         self.init_curve()
 
         self.trees = []
+        self.houses = []
 
     def init_curve(self):
         self.num_points = 100
@@ -118,11 +131,28 @@ class Model:
         return player_directions
 
     def addTrees(self, map):
+
+        tree_weights = [10 if texture == self.tree_textures[0] else 1 for texture in self.tree_textures]
+
         for row_index, row in enumerate(map):
             for col_index, cell in enumerate(row):
                 if cell == {12}:
-                    if random.random() < 0.5:
-                        tree = Tree(position=(col_index, row_index))
+                    if random.random() < 0.2:
+                        tree_sprite = random.choices(self.tree_textures, weights=tree_weights, k=1)[0]
+                        # tree = Tree(position=(col_index, row_index),sprite=random.choice(self.tree_textures))
+                        tree = Tree(position=(col_index, row_index), sprite=tree_sprite)
                         self.trees.append(tree)
         return self.trees
 
+    def addHouses(self, map):
+
+        house_weights = [10 if texture == self.house_textures[0] else 1 for texture in self.house_textures]
+
+        for row_index, row in enumerate(map):
+            for col_index, cell in enumerate(row):
+                if cell == {12} and cell not in self.trees:
+                    if random.random() < 0.05:
+                        house_sprite = random.choices(self.house_textures, weights=house_weights, k=1)[0]
+                        house = House(position=(col_index, row_index), sprite=house_sprite)
+                        self.houses.append(house)
+        return self.houses
