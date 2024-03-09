@@ -1,7 +1,8 @@
 import random
 from Model import Model
-
+from Play import Game
 import pygame
+import time
 
 
 class View:
@@ -26,6 +27,7 @@ class View:
 
         self.window = None
         self.lands = None
+        self.game = Game()
         pygame.init()
         self.window = pygame.display.set_mode((50 * 16, 50 * 16))
         pygame.display.set_caption('WFC Test')
@@ -51,7 +53,7 @@ class View:
                          else land for land in row] for row in m.wfc.grid]
         self.lands = [[pygame.image.load(path).convert() for path in row] for row in terrain_grid]
 
-    def displayMap(self):
+    def displayMap(self,map):
 
         running = True
         while running:
@@ -63,4 +65,13 @@ class View:
              for row_index, row in enumerate(self.lands)
              for col_index, image in enumerate(row)]
 
+            # Moving the Player and the AI character
+            if self.game.model.player.status:
+                self.game.moveKeyboard(self.window, map)
+
+            self.game.moveCharacter(self.window, map)
+            self.game.delete_player_in_contact()
+            # Flip the Display of the game
             pygame.display.flip()
+            # Smoothing the transactions
+            pygame.time.Clock().tick(7.5)

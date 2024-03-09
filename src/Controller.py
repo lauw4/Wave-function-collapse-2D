@@ -1,14 +1,13 @@
 from Model import Model
 from View import View
-import sqlite3
 
 
 class Controller:
     def __init__(self):
-        self.model = Model(50)
+        self.model = Model(30)
         self.view = View()
 
-    def init(self):
+    def run(self):
         self.model.add_water()
         self.model.wfc.run_collapse()
 
