@@ -2,27 +2,28 @@ from Model import Model
 from View import View
 import sqlite3
 
+
 class Controller:
     def __init__(self):
-        self.model = Model(30)
+        self.model = Model(50)
         self.view = View()
 
     def init(self):
         self.model.add_water()
         self.model.wfc.run_collapse()
 
-
-    def run(self, isNewMap = True):
+    def run(self, isNewMap=True):
         if isNewMap:
             self.init()
         else:
             self.load("test2")
+
         self.view.changeLand(self.model)
+        for i in self.model.wfc.grid:
+            print(i)
         self.view.displayMap()
 
-
     def save(self):
-
 
         # Connexion à la base de données SQLite
         conn = sqlite3.connect('ma_base_de_donnees.db')
@@ -66,7 +67,7 @@ class Controller:
         # Fermer la connexion
         conn.close()
 
-    def load(self,map_name):
+    def load(self, map_name):
         # Connexion à la base de données SQLite
         conn = sqlite3.connect('ma_base_de_donnees.db')
         cur = conn.cursor()
@@ -75,7 +76,6 @@ class Controller:
         nom_de_la_carte = map_name  # Remplacez par le nom réel de votre carte
         cur.execute('SELECT map_id, grid_size  FROM maps WHERE map_name = ?', (nom_de_la_carte,))
         map_id, grid_size = cur.fetchone()
-
 
         # Sélectionner les données de la grille pour cette carte
         cur.execute('SELECT rowIndex, columnIndex, value FROM lands_layer WHERE map_id = ?', (map_id,))
@@ -91,6 +91,7 @@ class Controller:
 
         self.model.wfc.grid = grille
 
+
 c = Controller()
-c.run(isNewMap=False)
-c.save()
+c.run(isNewMap=True)
+# c.save()

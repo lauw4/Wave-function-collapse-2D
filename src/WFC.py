@@ -37,7 +37,9 @@ class WFC2:
         if len(cell) == 1:
             return  # La cellule est déjà collapsée
 
-        weights = [(1000 if item == 12 else 1)
+        weights = [(1000 if item == 12
+                    # else 100 if item in [4,5,6,7]
+                    else 1)
                    for item in list(cell)]
 
         # weights = [1 for item in list(cell)]
