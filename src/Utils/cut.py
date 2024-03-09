@@ -1,6 +1,5 @@
 from PIL import Image
 
-
 def decouper_image(source, taille_segment=(16, 16)):
     # Charger l'image source
     image = Image.open(source)
@@ -28,12 +27,12 @@ def decouper_image(source, taille_segment=(16, 16)):
             segment = image.crop((gauche, haut, droite, bas))
 
             # Enregistrer le segment
-            nom_fichier = f"{dossier_segments}/Icon_{x}_{y}.png"
+            nom_fichier = f"{dossier_segments}/segment_{x}_{y}.png"
             segment.save(nom_fichier)
 
     print(f"Image découpée en segments de {taille_segment[0]}x{taille_segment[1]} pixels.")
 
 
 # Exemple d'utilisation
-source = 'UiIcons.png'  # Remplacez par le chemin de votre image
+source = 'Chapels.png'  # Remplacez par le chemin de votre image
 decouper_image(source)
