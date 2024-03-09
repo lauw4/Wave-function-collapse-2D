@@ -2,7 +2,7 @@ from copy import deepcopy
 import numpy as np
 from pygame.locals import *
 import Bezier
-import Tools
+#import Tools
 from WFC import WFC2
 import pygame
 import random
@@ -109,14 +109,14 @@ def changeLand(g):
 
     for row_index, row in enumerate(m.land_layer):
         for col_index, cell in enumerate(row):
-            if isinstance(cell, Land) and cell == Land.GRASS:
-                if random.random() < 0.5:
-                    tree_sprite_trunk = random.choice(trunk_images)
-                    tree = Tree(tree_sprite_trunk)
+            if cell == Land.GRASS:
+                if random.random() < 0.2:
+                    tree_sprite = random.choice(trunk_images)
+                    tree_image = pygame.image.load(tree_sprite).convert()
+                    tree = Tree()  # sprite trunk retirer inutile
+                    tree.image = tree_image  # Stocker directement l'image ici
                     tree.position = (col_index * 16, row_index * 16)
-                    m.add_tree(tree)  # Ajoute l'arbre à la carte
                     trees.append(tree)
-                    print("Tree added at:", tree.position)
 
     print("Number of trees added:", len(trees))
     print("First tree position:", trees[0].position if trees else None)
@@ -152,7 +152,7 @@ while running:
                 changeLand(deepcopy(wfc))
             if is_point_inside_rect(event.pos, button_rect2):
                 changeWFC()
-                changeLand(deepcopy(wfc))
+                chacngeLand(deepcopy(wfc))
 
     blit_list = [window.blit(image, (col_index * 16, row_index * 16))
                  for row_index, row in enumerate(lands)

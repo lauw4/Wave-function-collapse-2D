@@ -12,6 +12,7 @@ class Controller:
         self.model.wfc.run_collapse()
         self.model.map.set_land_layer(self.model.wfc)
         self.model.addTrees(self.model.wfc.grid)
+        self.model.addHouses(self.model.wfc.grid)
         self.view.changeLand(self.model)
         self.view.displayMap(self.model)
 

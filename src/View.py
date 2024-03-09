@@ -24,8 +24,16 @@ class View:
         self.turn_cliff_NE_textures = ["LandsImg/turn_cliff_NE.png"]
         self.turn_cliff_SW_textures = ["LandsImg/turn_cliff_SW.png"]
         self.turn_cliff_WN_textures = ["LandsImg/turn_cliff_WN.png"]
-        self.tree_textures = ["./data/imgs/props/trees_status/tree1.png"]
-
+        self.tree_textures = ["./data/imgs/props/trees_status/tree1.png",
+                              "./data/imgs/props/trees_status/tree2.png",
+                              "./data/imgs/props/trees_status/tree3.png",
+                              "./data/imgs/props/trees_status/tree_cut.png"]
+        self.house_textures = ["./data/imgs/props/houses_status/house1.png",
+                               "./data/imgs/props/houses_status/house2.png",
+                               "./data/imgs/props/houses_status/house3.png",
+                               "./data/imgs/props/houses_status/house4.png",
+                               "./data/imgs/props/houses_status/house5.png",
+                               "./data/imgs/props/houses_status/house6.png"]
         self.window = None
         self.lands = None
         self.game = Game()
@@ -72,7 +80,10 @@ class View:
             
             
             for tree in model.trees:
-                tree.draw(self.window, self.tree_textures[0], (tree.x, tree.y))
+                tree.draw(self.window, tree.sprite, (tree.x, tree.y))
+
+            for house in model.houses:
+                house.draw(self.window, house.sprite, (house.x, house.y))
             
             # Moving the Player and the AI character
             if self.game.model.player.status:
