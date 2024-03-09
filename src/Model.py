@@ -33,7 +33,7 @@ class Model:
         self.num_points = None
         self.control_points = None
         self.characters = [Character(), Character(position=(15, 40)), Character(position=(25, 25)),
-                           Character(position=(50, 45))]
+                           Character(position=(30, 35))]
         self.player = Player()
 
         self.curve = None
@@ -149,4 +149,12 @@ class Model:
                         house_sprite = random.choices(self.house_textures, weights=house_weights, k=1)[0]
                         house = House(position=(col_index, row_index), sprite=house_sprite)
                         self.houses.append(house)
+                        #cell = {40}
         return self.houses
+    
+    def reposition_character(self,charact, map):
+        for row_index, row in enumerate(map):
+            for col_index, cell in enumerate(row):
+                if cell == {12}:
+                    charact.x = row_index
+                    charact.y = col_index
