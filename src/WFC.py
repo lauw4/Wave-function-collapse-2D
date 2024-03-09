@@ -2,7 +2,7 @@ import csv
 from random import choices
 from PIL import Image
 
-from src.Tile import Tile2
+from Tile import Tile2
 
 class WFC2:
     def __init__(self, tiles_file, grid_size=(10, 10)):

@@ -17,6 +17,8 @@ class Controller:
         else:
             self.load("test2")
 
+        self.model.addTrees(self.model.wfc.grid)
+        self.model.addHouses(self.model.wfc.grid)
         self.view.changeLand(self.model)
         for i in self.model.wfc.grid:
             print(i)
@@ -90,6 +92,7 @@ class Controller:
 
         self.model.wfc.grid = grille
 
+        self.view.displayMap(self.model)
 
 c = Controller()
 c.run(isNewMap=True)
