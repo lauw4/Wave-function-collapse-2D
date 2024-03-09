@@ -1,13 +1,13 @@
 from Model import Model
 from View import View
-
+import sqlite3
 
 class Controller:
     def __init__(self):
-        self.model = Model(30)
+        self.model = Model(75)
         self.view = View()
 
-    def run(self):
+    def init(self):
         self.model.add_water()
         self.model.wfc.run_collapse()
 
@@ -20,7 +20,7 @@ class Controller:
         self.view.changeLand(self.model)
         for i in self.model.wfc.grid:
             print(i)
-        self.view.displayMap()
+        self.view.displayMap(self.model.wfc.grid)
 
     def save(self):
 

@@ -29,7 +29,7 @@ class View:
         self.lands = None
         self.game = Game()
         pygame.init()
-        self.window = pygame.display.set_mode((50 * 16, 50 * 16))
+        self.window = pygame.display.set_mode((75 * 16, 75 * 16))
         pygame.display.set_caption('WFC Test')
 
     def changeLand(self, m):
