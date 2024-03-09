@@ -1,4 +1,3 @@
-from src.Map import Map
 from src.WFC import WFC2
 import src.Bezier as bz
 
@@ -8,7 +7,6 @@ class Model:
         self.n_ = n
         self.grid_size = (n, n)
         self.wfc = WFC2("data/test3.csv", self.grid_size)
-        self.map = Map(self.n_)
         self.num_points = None
         self.control_points = None
         self.curve = None

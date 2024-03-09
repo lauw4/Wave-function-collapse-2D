@@ -49,7 +49,6 @@ class View:
                          else random.choice(self.turn_cliff_SW_textures) if land == {10}
                          else random.choice(self.turn_cliff_WN_textures) if land == {11}
                          else land for land in row] for row in m.wfc.grid]
-
         self.lands = [[pygame.image.load(path).convert() for path in row] for row in terrain_grid]
 
     def displayMap(self):
