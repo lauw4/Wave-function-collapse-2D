@@ -4,7 +4,7 @@ from View import View
 
 class Controller:
     def __init__(self):
-        self.model = Model(30)
+        self.model = Model(50)
         self.view = View()
 
     def run(self):

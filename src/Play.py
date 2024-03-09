@@ -69,39 +69,35 @@ class Game:
             keys = pg.key.get_pressed()
             if keys[pg.K_LEFT]:
                 if "W" in player_positions:
-                    print("left pressed")
                     self.model.player.x -= 1
                     self.model.player.image = self.player_textures[1]
                     self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
                 else:
-                    print("Zone inaccessible")
+                    print("Unreachable Zone")
 
             elif keys[pg.K_RIGHT]:
                 if "E" in player_positions:
-                    print("right pressed")
                     self.model.player.x += 1
                     self.model.player.image = self.player_textures[0]
                     self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
                 else:
-                    print("Zone inaccessible")
+                    print("Unreachable Zone")
 
             elif keys[pg.K_UP]:
                 if "N" in player_positions:
-                    print("up pressed")
                     self.model.player.y -= 1
                     self.model.player.image = self.player_textures[2]
                     self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
                 else:
-                    print("Zone inaccessible")
+                    print("Unreachable Zone")
 
             elif keys[pg.K_DOWN]:
                 if "S" in player_positions:
-                    print("down pressed")
                     self.model.player.y += 1
                     self.model.player.image = self.player_textures[3]
                     self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
                 else:
-                    print("Zone inaccessible")
+                    print("Unreachable Zone")
         else:
             # In case you haven't pressed on the arrow buttons
             print("Use the Direction keys / arrow keys")

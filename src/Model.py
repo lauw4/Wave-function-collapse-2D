@@ -83,26 +83,20 @@ class Model:
     # Functions to give possible movements of the CHARACTER
     def player_movements(self, map):
         player_directions = []
+
         if map is not None:
-
-            for i in range(1):
-                for j in range(1):
-                    print(map[i][j])
-
             x = self.player.x
             y = self.player.y
+
             if 0 <= x < len(map) and 0 <= y < len(map[0]):
                 # Check each of the four neighboring cells: N, S, W, E
                 for dx, dy in [(0, -1), (0, 1), (-1, 0), (1, 0)]:
                     new_x = x + dx
                     new_y = y + dy
 
-                    print(f"""nx : {new_x}, ny : {new_y}""")
-
                     if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
-                        print(f"""test : {map[new_y][new_x]}""")
+                        
                         if map[new_y][new_x] in [{12}, {42}]:
-                            print(2)
                             # Determine the direction based on the relative position
                             direction = ""
                             if dx == 0 and dy == -1:
@@ -121,7 +115,7 @@ class Model:
         for row_index, row in enumerate(map):
             for col_index, cell in enumerate(row):
                 if cell == {12}:
-                    if random.random() < 0.5:
+                    if random.random() < 0.1:
                         tree = Tree(position=(col_index, row_index))
                         self.trees.append(tree)
         return self.trees
