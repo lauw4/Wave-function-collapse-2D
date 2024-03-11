@@ -46,7 +46,7 @@ class Character:
         # Blit the road on the window
         window.blit(image, image_rect)
 
-
+# Player class
 class Player(Character):
     def __init__(self, name=None, image="data/imgs/player_front.png", position=(1,1), status=True):
         super().__init__(name, image, position)
