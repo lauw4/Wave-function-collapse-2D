@@ -13,3 +13,5 @@ turn_cliff_SW,turn_cliff_SW.png,Land.CLIFF,Land.CLIFF,Land.GRASS,Land.GRASS,Land
 turn_cliff_WN,turn_cliff_WN.png,Land.GRASS,Land.CLIFF,Land.CLIFF,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.WATER
 grass,grass.png,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS
 water,water.png,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.WATER,Land.WATER
+horizontal_path,horizontal_path.png,Land.GRASS,Land.ROAD,Land.GRASS,Land.ROAD,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS
+vertical_path,vertical_path.png,Land.ROAD,Land.GRASS,Land.ROAD,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS,Land.GRASS

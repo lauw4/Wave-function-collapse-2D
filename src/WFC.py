@@ -10,6 +10,7 @@ class WFC2:
         self.tiles_ = []
         self.read_tiles_from_csv(tiles_file)
         self.grid = [[set(range(len(self.tiles_))) for _ in range(grid_size[1])] for _ in range(grid_size[0])]
+        print(self.grid)
 
     def read_tiles_from_csv(self, filename):
         with open(filename, mode='r', encoding='utf-8') as file:
@@ -37,7 +38,9 @@ class WFC2:
         if len(cell) == 1:
             return  # La cellule est déjà collapsée
 
-        weights = [(1000 if item == 12 else 1)
+        weights = [(1000 if item == 12
+                    # else 100 if item in [4,5,6,7]
+                    else 1)
                    for item in list(cell)]
 
         # weights = [1 for item in list(cell)]
