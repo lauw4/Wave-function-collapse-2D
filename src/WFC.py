@@ -10,7 +10,7 @@ class WFC2:
         self.tiles_ = []
         self.read_tiles_from_csv(tiles_file)
         self.grid = [[set(range(len(self.tiles_))) for _ in range(grid_size[1])] for _ in range(grid_size[0])]
-        print(self.grid)
+        # print(self.grid)
 
     def read_tiles_from_csv(self, filename):
         with open(filename, mode='r', encoding='utf-8') as file:

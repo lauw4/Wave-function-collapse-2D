@@ -82,21 +82,7 @@ class View:
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-
                     running = False
-                    should_save = False
-                    while not should_save:
-
-                        user_input = input("Do you want to save the map before quitting? (y/n) ")
-
-                        if user_input == "y":
-                            self.database.save_to_db()
-                            should_save = True
-
-                        elif user_input == "n":
-                            should_save = True
-                        else:
-                            print("Invalid input. Please enter 'y' for yes or 'n' for no.")
 
             [self.window.blit(image, (col_index * 16, row_index * 16))
              for row_index, row in enumerate(self.lands)
@@ -110,7 +96,7 @@ class View:
 
             # Moving the Player and the AI character
             if self.game.model.player.status:
-                self.game.moveKeyboard(self.window, map)
+                self.game.moveKeyboard(self.window, map, model.houses)
 
             self.game.moveCharacter(self.window, map)
             self.game.delete_player_in_contact()

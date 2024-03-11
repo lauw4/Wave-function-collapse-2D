@@ -50,9 +50,9 @@ class Model:
         self.num_points = 100
         self.control_points = bz.generate_control_points(self.n_)
         self.curve = bz.bezier_curve(self.control_points, self.num_points)
-
         self.control_points2 = bz.generate_control_points(self.n_)
-        self.control_points2[0] = random.choice(self.curve)
+        index = random.randint(0, len(self.curve)-1)
+        self.control_points2[0] = self.curve[index]
         self.curve2 = bz.bezier_curve(self.control_points2, self.num_points)
 
     def add_water(self):
@@ -100,7 +100,7 @@ class Model:
                             new_x = x + dx
                             new_y = y + dy
                             if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
-                                if map[new_y][new_x] in [{12}, {42}]:
+                                if map[new_y][new_x] in [{12}, {14}, {15}]:  
                                     # Determine the direction based on the relative position
                                     direction = ""
                                     if dx == -1 and dy == 0:
@@ -124,7 +124,7 @@ class Model:
         return directions
 
     # Functions to give possible movements of the CHARACTER
-    def player_movements(self, map):
+    def player_movements(self, map, houses):
         player_directions = []
 
         if map is not None:
@@ -139,22 +139,20 @@ class Model:
                     new_y = y + dy
 
                     if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
-                        print(f"""test : {map[new_y][new_x]}""")
-                        if map[new_y][new_x] in [{12}, {14}, {15}]:
-                            print(2)
-                        
-                        if map[new_y][new_x] in [{12}, {42}]:
-                            # Determine the direction based on the relative position
-                            direction = ""
-                            if dx == 0 and dy == -1:
-                                direction += "N"
-                            elif dx == 0 and dy == 1:
-                                direction += "S"
-                            elif dx == -1 and dy == 0:
-                                direction += "W"
-                            elif dx == 1 and dy == 0:
-                                direction += "E"
-                            player_directions.append(direction)
+                        houses_array = [house.position for house in houses]
+                        if (new_x,new_y) not in houses_array:
+                            if map[new_y][new_x] in [{12}, {14}, {15}]:
+                                # Determine the direction based on the relative position
+                                direction = ""
+                                if dx == 0 and dy == -1:
+                                    direction += "N"
+                                elif dx == 0 and dy == 1:
+                                    direction += "S"
+                                elif dx == -1 and dy == 0:
+                                    direction += "W"
+                                elif dx == 1 and dy == 0:
+                                    direction += "E"
+                                player_directions.append(direction)
 
         return player_directions
 
@@ -196,38 +194,38 @@ class Model:
         # ... the rest of the map should be represented in a similar fashion.
     ]
 
-    def add_bridges_with_sets(self):
-        # Define the new representation for bridges and land
-        spacing = 7
+    # def add_bridges_with_sets(self):
+    #     # Define the new representation for bridges and land
+    #     spacing = 7
 
-        bridge = {15}
-        land = {12}
-        water = {13}
-        other_tiles = [{i} for i in range(11)]  # Sets containing numbers from 0 to 11
+    #     bridge = {15}
+    #     land = {12}
+    #     water = {13}
+    #     other_tiles = [{i} for i in range(11)]  # Sets containing numbers from 0 to 11
 
-        # Get the dimensions of the map
-        rows = len(self.wfc.grid)
-        cols = len(self.wfc.grid)[0]
+    #     # Get the dimensions of the map
+    #     rows = len(self.wfc.grid)
+    #     cols = len(self.wfc.grid)[0]
 
-        # Check for the validity of the adjacent tiles (should be land or other allowed tiles)
-        def is_valid_adjacent_tile(tile, other_allowed_tiles):
-            return tile == land or tile in other_allowed_tiles
+    #     # Check for the validity of the adjacent tiles (should be land or other allowed tiles)
+    #     def is_valid_adjacent_tile(tile, other_allowed_tiles):
+    #         return tile == land or tile in other_allowed_tiles
 
-        # Check for horizontal spaces for bridges
-        for i in range(rows):
-            for j in range(cols - spacing):
-                if (is_valid_adjacent_tile(self.wfc.grid[i][j], other_tiles) and
-                        all(self.wfc.grid[i][k] == water for k in range(j + 1, j + spacing)) and
-                        is_valid_adjacent_tile(self.wfc.grid[i][j + spacing], other_tiles)):
-                    self.wfc.grid[i][j + spacing // 2] = bridge
+    #     # Check for horizontal spaces for bridges
+    #     for i in range(rows):
+    #         for j in range(cols - spacing):
+    #             if (is_valid_adjacent_tile(self.wfc.grid[i][j], other_tiles) and
+    #                     all(self.wfc.grid[i][k] == water for k in range(j + 1, j + spacing)) and
+    #                     is_valid_adjacent_tile(self.wfc.grid[i][j + spacing], other_tiles)):
+    #                 self.wfc.grid[i][j + spacing // 2] = bridge
 
-        # Check for vertical spaces for bridges
-        for j in range(cols):
-            for i in range(rows - spacing):
-                if (is_valid_adjacent_tile(self.wfc.grid[i][j], other_tiles) and
-                        all(self.wfc.grid[k][j] == water for k in range(i + 1, i + spacing)) and
-                        is_valid_adjacent_tile(self.wfc.grid[i + spacing][j], other_tiles)):
-                    self.wfc.grid[i + spacing // 2][j] = bridge
+    #     # Check for vertical spaces for bridges
+    #     for j in range(cols):
+    #         for i in range(rows - spacing):
+    #             if (is_valid_adjacent_tile(self.wfc.grid[i][j], other_tiles) and
+    #                     all(self.wfc.grid[k][j] == water for k in range(i + 1, i + spacing)) and
+    #                     is_valid_adjacent_tile(self.wfc.grid[i + spacing][j], other_tiles)):
+    #                 self.wfc.grid[i + spacing // 2][j] = bridge
 
     # The user should replace the mock-up with their actual map data.
     # Uncomment the line below to run the function with the actual map representation

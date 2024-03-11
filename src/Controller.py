@@ -13,9 +13,7 @@ class Controller:
         self.model.add_water()
         self.model.wfc.run_collapse()
         self.model.add_road(20)
-        self.model.add_bridges_with_spacing()
-        for i in self.model.wfc.grid:
-            print(i)
+        # self.model.add_bridges_with_spacing()
 
     def run(self, isNewMap=True):
         if isNewMap:
@@ -26,8 +24,6 @@ class Controller:
         self.model.addTrees(self.model.wfc.grid)
         self.model.addHouses(self.model.wfc.grid)
         self.view.changeLand(self.model)
-        for i in self.model.wfc.grid:
-            print(i)
         self.view.displayMap(self.model)
 
     def save(self):
@@ -100,5 +96,5 @@ class Controller:
 
 
 c = Controller()
-c.run(isNewMap=False)
+c.run(isNewMap=True)
 # c.save()
