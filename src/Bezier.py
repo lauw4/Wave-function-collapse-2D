@@ -28,6 +28,7 @@ def is_below_curve(point, curve_points, offset):
     # Vérifier si la distance minimale est inférieure ou égale à l'offset
     return np.min(distances) <= offset
 
+
 def select_edge_point(n):
     edge = random.choice(['top', 'bottom', 'left', 'right'])
     if edge == 'top':
@@ -41,12 +42,11 @@ def select_edge_point(n):
 
 
 def generate_control_points(n):
-    num_internal_points = 3
+    num_internal_points = 2
+
     start_point = select_edge_point(n)
     end_point = select_edge_point(n)
-
     internal_points = [np.array([np.random.randint(0, n), np.random.randint(0, n)]) for _ in range(num_internal_points)]
 
     control_points_ = np.array([start_point] + internal_points + [end_point])
     return control_points_
-

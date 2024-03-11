@@ -41,6 +41,9 @@ class Model:
         self.curve2 = None
         self.init_curve()
 
+        self.curve3 = None
+        self.control_points3 = None
+
         self.trees = []
         self.houses = []
 
@@ -62,6 +65,26 @@ class Model:
                 elif not (bz.is_below_curve([x, y], self.curve, 4) or bz.is_below_curve([x, y], self.curve2, 4)):
                     self.wfc.grid[y][x] = {12}
                     self.wfc.update_neighbors(y, x)
+
+    def add_road(self, nb_road):
+        for i in range(nb_road):
+            A, B = (random.randint(0, self.n_ - 1), random.randint(0, self.n_ - 1)), \
+                (random.randint(0, self.n_ - 1), random.randint(0, self.n_ - 1))
+            # Générer un chemin aléatoire de A à B
+
+            x, y = A
+            chemin = [(x, y)]
+            while (x, y) != B and len(chemin) < 15:
+                choix = random.choice(['x', 'y'])
+                if choix == 'x' and x != B[0]:
+                    x += -1 if x > B[0] else 1
+                elif y != B[1]:
+                    y += -1 if y > B[1] else 1
+                chemin.append((x, y))
+
+            for (x, y) in chemin:
+                if self.wfc.grid[y][x] == {12}:
+                    self.wfc.grid[y][x] = random.choices(({12}, {14}, {15}), weights=[1, 5, 5], k=1)[0]
 
     def ai_characters_movements(self, map, character):
         directions = []
@@ -120,7 +143,7 @@ class Model:
 
                     if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
                         print(f"""test : {map[new_y][new_x]}""")
-                        if map[new_y][new_x] in [{12}, {42}]:
+                        if map[new_y][new_x] in [{12}, {14}, {15}]:
                             print(2)
                             # Determine the direction based on the relative position
                             direction = ""
@@ -162,3 +185,51 @@ class Model:
                         house = House(position=(col_index, row_index), sprite=house_sprite)
                         self.houses.append(house)
         return self.houses
+
+    # Let's create a function to place bridges
+    # Given the new information, we need to adjust the map_representation and the algorithm.
+    # The map will consist of sets containing a single integer instead of just integers.
+
+    # Define a mock-up map representation using sets for each tile
+    map_representation = [
+        [{12}, {0}, {13}, {13}, {13}, {13}, {13}, {11}, {12}],
+        # ... the rest of the map should be represented in a similar fashion.
+    ]
+
+    def add_bridges_with_sets(self):
+        # Define the new representation for bridges and land
+        spacing = 7
+
+        bridge = {15}
+        land = {12}
+        water = {13}
+        other_tiles = [{i} for i in range(11)]  # Sets containing numbers from 0 to 11
+
+        # Get the dimensions of the map
+        rows = len(self.wfc.grid)
+        cols = len(self.wfc.grid)[0]
+
+        # Check for the validity of the adjacent tiles (should be land or other allowed tiles)
+        def is_valid_adjacent_tile(tile, other_allowed_tiles):
+            return tile == land or tile in other_allowed_tiles
+
+        # Check for horizontal spaces for bridges
+        for i in range(rows):
+            for j in range(cols - spacing):
+                if (is_valid_adjacent_tile(self.wfc.grid[i][j], other_tiles) and
+                        all(self.wfc.grid[i][k] == water for k in range(j + 1, j + spacing)) and
+                        is_valid_adjacent_tile(self.wfc.grid[i][j + spacing], other_tiles)):
+                    self.wfc.grid[i][j + spacing // 2] = bridge
+
+        # Check for vertical spaces for bridges
+        for j in range(cols):
+            for i in range(rows - spacing):
+                if (is_valid_adjacent_tile(self.wfc.grid[i][j], other_tiles) and
+                        all(self.wfc.grid[k][j] == water for k in range(i + 1, i + spacing)) and
+                        is_valid_adjacent_tile(self.wfc.grid[i + spacing][j], other_tiles)):
+                    self.wfc.grid[i + spacing // 2][j] = bridge
+
+    # The user should replace the mock-up with their actual map data.
+    # Uncomment the line below to run the function with the actual map representation
+    # add_bridges_with_sets(map_representation)
+

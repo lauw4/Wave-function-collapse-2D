@@ -2,27 +2,33 @@ from Model import Model
 from View import View
 import sqlite3
 
+
 class Controller:
     def __init__(self):
-        self.model = Model(75)
+        self.model = Model(50)
         self.view = View()
 
     def init(self):
+
         self.model.add_water()
         self.model.wfc.run_collapse()
+        self.model.add_road(20)
+        self.model.add_bridges_with_spacing()
+        for i in self.model.wfc.grid:
+            print(i)
 
     def run(self, isNewMap=True):
         if isNewMap:
             self.init()
         else:
-            self.load("test2")
+            self.load("test3")
 
         self.model.addTrees(self.model.wfc.grid)
         self.model.addHouses(self.model.wfc.grid)
         self.view.changeLand(self.model)
         for i in self.model.wfc.grid:
             print(i)
-        self.view.displayMap(self.model.wfc.grid)
+        self.view.displayMap(self.model)
 
     def save(self):
 
@@ -52,7 +58,7 @@ class Controller:
         ''')
         conn.commit()
 
-        map_name = "test2"  # Remplacez ceci par le nom réel de votre carte
+        map_name = "test3"  # Remplacez ceci par le nom réel de votre carte
         cur.execute('INSERT INTO maps (map_name, grid_size) VALUES (?,?)', (map_name, self.model.n_))
         map_id = cur.lastrowid  # Récupérer l'ID de la nouvelle carte ajoutée
 
@@ -92,8 +98,7 @@ class Controller:
 
         self.model.wfc.grid = grille
 
-        self.view.displayMap(self.model)
 
 c = Controller()
-c.run(isNewMap=True)
+c.run(isNewMap=False)
 # c.save()
