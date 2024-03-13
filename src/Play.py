@@ -65,7 +65,7 @@ class Game:
 
 
    # Function for moving the Player as the direction keys are pressed 
-    def moveKeyboard(self, window, map):
+    def moveKeyboard(self, window, map, houses):
 
         x = self.model.player.x
         y = self.model.player.y
@@ -75,7 +75,7 @@ class Game:
 
         else:
             # get possible movements direction the player can make
-            player_positions = self.model.player_movements(map)
+            player_positions = self.model.player_movements(map, houses)
             # print(f'Player possible Positions:{player_positions}')
             self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
             if player_positions:

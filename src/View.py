@@ -29,7 +29,8 @@ class View:
         self.turn_cliff_NE_textures = ["LandsImg/turn_cliff_NE.png"]
         self.turn_cliff_SW_textures = ["LandsImg/turn_cliff_SW.png"]
         self.turn_cliff_WN_textures = ["LandsImg/turn_cliff_WN.png"]
-
+        self.horizontal_path_textures = ["LandsImg/vertical_path.png"]
+        self.vertical_path_textures = ["LandsImg/horizontal_path.png"]
         self.tree_textures = ["./data/imgs/props/trees_status/tree1.png",
                               "./data/imgs/props/trees_status/tree2.png",
                               "./data/imgs/props/trees_status/tree3.png",
@@ -69,52 +70,37 @@ class View:
                          else random.choice(self.turn_cliff_NE_textures) if land == {9}
                          else random.choice(self.turn_cliff_SW_textures) if land == {10}
                          else random.choice(self.turn_cliff_WN_textures) if land == {11}
+                        else random.choice(self.horizontal_path_textures) if land == {14}
+                         else random.choice(self.vertical_path_textures) if land == {15}
                          else land for land in row] for row in m.wfc.grid]
-
         self.lands = [[pygame.image.load(path).convert() for path in row] for row in terrain_grid]
 
-    def displayMap(self,model):
-
+    def displayMap(self, model):
         map = model.wfc.grid
         running = True
 
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-
                     running = False
-                    should_save = False
-                    while not should_save:
-
-                        user_input = input("Do you want to save the map before quitting? (y/n) ")
-
-                        if user_input == "y":
-                            self.database.save_to_db()
-                            should_save = True
-
-                        elif user_input == "n":
-                            should_save = True
-                        else:
-                            print("Invalid input. Please enter 'y' for yes or 'n' for no.")
 
             [self.window.blit(image, (col_index * 16, row_index * 16))
              for row_index, row in enumerate(self.lands)
              for col_index, image in enumerate(row)]
-            
-            
+
             for tree in model.trees:
                 tree.draw(self.window, tree.sprite, (tree.x, tree.y))
 
             for house in model.houses:
                 house.draw(self.window, house.sprite, (house.x, house.y))
-            
+
             # Moving the Player and the AI character
             if self.game.model.player.status:
-                self.game.moveKeyboard(self.window, map)
+                self.game.moveKeyboard(self.window, map, model.houses)
 
             self.game.moveCharacter(self.window, map)
             self.game.delete_player_in_contact()
             # Flip the Display of the game
             pygame.display.flip()
             # Smoothing the transactions
-            pygame.time.Clock().tick(7.5)
+            pygame.time.Clock().tick(30)
