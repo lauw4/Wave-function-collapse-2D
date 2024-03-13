@@ -18,7 +18,7 @@ class Controller:
         if is_new_map:
             self.init()
         else:
-            self.load("test3")
+            self.load()
 
         self.model.addTrees()
         self.model.addHouses()
@@ -28,7 +28,7 @@ class Controller:
     def save(self, map_name):
 
         # Connexion à la base de données SQLite
-        conn = sqlite3.connect('ma_base_de_donnees.db')
+        conn = sqlite3.connect('./database/wfc_database.db')
         cur = conn.cursor()
 
         cur.execute('''
@@ -68,14 +68,14 @@ class Controller:
         # Fermer la connexion
         conn.close()
 
-    def load(self, map_name):
+    def load(self):
+        map_name = './database/wfc_database.db'
         # Connexion à la base de données SQLite
-        conn = sqlite3.connect('ma_base_de_donnees.db')
+        conn = sqlite3.connect(map_name)
         cur = conn.cursor()
 
         # Sélectionner l'ID de la carte par son nom
-        nom_de_la_carte = map_name  # Remplacez par le nom réel de votre carte
-        cur.execute('SELECT map_id, grid_size  FROM maps WHERE map_name = ?', (nom_de_la_carte,))
+        cur.execute('SELECT map_id, grid_size  FROM maps WHERE map_name = ?', (map_name,))
         map_id, grid_size = cur.fetchone()
 
         # Sélectionner les données de la grille pour cette carte
@@ -94,5 +94,5 @@ class Controller:
 
 
 c = Controller()
-c.run(is_new_map=True)
-# c.save("Map1")
+c.run(is_new_map=False)
+#c.save("Map1")
