@@ -12,21 +12,20 @@ class Controller:
 
         self.model.add_water()
         self.model.wfc.run_collapse()
-        self.model.add_road(20)
-        # self.model.add_bridges_with_spacing()
+        self.model.add_road(30)
 
-    def run(self, isNewMap=True):
-        if isNewMap:
+    def run(self, is_new_map=True):
+        if is_new_map:
             self.init()
         else:
             self.load("test3")
 
-        self.model.addTrees(self.model.wfc.grid)
-        self.model.addHouses(self.model.wfc.grid)
+        self.model.addTrees()
+        self.model.addHouses()
         self.view.changeLand(self.model)
         self.view.displayMap(self.model)
 
-    def save(self):
+    def save(self, map_name):
 
         # Connexion à la base de données SQLite
         conn = sqlite3.connect('ma_base_de_donnees.db')
@@ -54,7 +53,6 @@ class Controller:
         ''')
         conn.commit()
 
-        map_name = "test3"  # Remplacez ceci par le nom réel de votre carte
         cur.execute('INSERT INTO maps (map_name, grid_size) VALUES (?,?)', (map_name, self.model.n_))
         map_id = cur.lastrowid  # Récupérer l'ID de la nouvelle carte ajoutée
 
@@ -96,5 +94,5 @@ class Controller:
 
 
 c = Controller()
-c.run(isNewMap=True)
-# c.save()
+c.run(is_new_map=True)
+# c.save("Map1")
