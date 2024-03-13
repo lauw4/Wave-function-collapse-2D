@@ -68,14 +68,14 @@ class Controller:
         # Fermer la connexion
         conn.close()
 
-    def load(self):
-        map_name = './database/wfc_database.db'
+    def load(self,map_name = 'Map1'):
         # Connexion à la base de données SQLite
-        conn = sqlite3.connect(map_name)
+        conn = sqlite3.connect('./database/wfc_database.db')
         cur = conn.cursor()
 
         # Sélectionner l'ID de la carte par son nom
-        cur.execute('SELECT map_id, grid_size  FROM maps WHERE map_name = ?', (map_name,))
+        nom_de_la_carte = map_name  # Remplacez par le nom réel de votre carte
+        cur.execute('SELECT map_id, grid_size  FROM maps WHERE map_name = ?', (nom_de_la_carte,))
         map_id, grid_size = cur.fetchone()
 
         # Sélectionner les données de la grille pour cette carte
