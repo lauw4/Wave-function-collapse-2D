@@ -1,7 +1,7 @@
 import random
 from copy import deepcopy
 import pygame
-from Character import Character, Player
+from character import Character, Player
 import WFC
 import Map
 from Map import Map
