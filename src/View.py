@@ -70,13 +70,12 @@ class View:
                          else random.choice(self.turn_cliff_NE_textures) if land == {9}
                          else random.choice(self.turn_cliff_SW_textures) if land == {10}
                          else random.choice(self.turn_cliff_WN_textures) if land == {11}
-                        else random.choice(self.horizontal_path_textures) if land == {14}
+                         else random.choice(self.horizontal_path_textures) if land == {14}
                          else random.choice(self.vertical_path_textures) if land == {15}
                          else land for land in row] for row in m.wfc.grid]
         self.lands = [[pygame.image.load(path).convert() for path in row] for row in terrain_grid]
 
     def displayMap(self, model):
-        map = model.wfc.grid
         running = True
 
         while running:
@@ -89,16 +88,16 @@ class View:
              for col_index, image in enumerate(row)]
 
             for tree in model.trees:
-                tree.draw(self.window, tree.sprite, (tree.x, tree.y))
+                tree.draw(self.window)
 
             for house in model.houses:
-                house.draw(self.window, house.sprite, (house.x, house.y))
+                house.draw(self.window)
 
             # Moving the Player and the AI character
             if self.game.model.player.status:
-                self.game.moveKeyboard(self.window, map, model.houses)
+                self.game.moveKeyboard(self.window, model.wfc.grid, model.houses)
 
-            self.game.moveCharacter(self.window, map)
+            self.game.moveCharacter(self.window, model.wfc.grid)
             self.game.delete_player_in_contact()
             # Flip the Display of the game
             pygame.display.flip()
