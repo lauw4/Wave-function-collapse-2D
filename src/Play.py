@@ -23,7 +23,7 @@ class Game:
             x, y = character.x, character.y
 
             if map[y][x] == {13}:
-                new_x,new_y = random.choice(self.model.reposition_character(map))
+                new_y,new_x = random.choice(self.model.reposition_character(map))
                 character.x, character.y = new_y, new_x
 
             else:
@@ -69,7 +69,7 @@ class Game:
         x, y = self.model.player.x, self.model.player.y
 
         if map[y][x] == {13}:
-            new_x, new_y = random.choice(self.model.reposition_character(map))
+            new_y, new_x = random.choice(self.model.reposition_character(map))
             self.model.player.x, self.model.player.y = new_y, new_x
         else:
             player_positions = self.model.player_movements(map, houses)
