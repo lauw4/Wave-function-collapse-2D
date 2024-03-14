@@ -94,5 +94,5 @@ class Controller:
 
 
 c = Controller()
-c.run(is_new_map=False)
+c.run(is_new_map=True)
 # c.save("Map2")
