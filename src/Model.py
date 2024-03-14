@@ -32,11 +32,11 @@ class Model:
         self.curve3 = None
         self.control_points3 = None
 
-        self.characters = [Character(position=(5, 5)),
+        self.characters = [Character(position=(2, 2)),
                            Character(position=(15, 20)),
                            Character(position=(25, 30)),
                            Character(position=(5, 35))]
-        self.player = Player(position=(random.randint(0, n), random.randint(0, n)))
+        self.player = Player()
 
         self.trees = []
         self.houses = []
@@ -176,8 +176,11 @@ class Model:
                         self.houses.append(house)
         return self.houses
 
-    def reposition_character(self, char):
-        for row_index, row in enumerate(self.wfc.grid):
+    def reposition_character(self, map):
+        glass = []
+        for row_index, row in enumerate(map):
             for col_index, cell in enumerate(row):
-                if cell in {12}:
-                    char.position = (row_index, col_index)
+                if cell == {12}:
+                  glass.append((row_index,col_index)) 
+        
+        return glass

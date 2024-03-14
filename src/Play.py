@@ -20,11 +20,11 @@ class Game:
     def moveCharacter(self, window, map):
 
         for character in self.model.characters:
-            x = character.x
-            y = character.y
+            x, y = character.x, character.y
 
             if map[y][x] == {13}:
-                self.model.reposition_character(character)
+                new_x,new_y = random.choice(self.model.reposition_character(map))
+                character.x, character.y = new_y, new_x
 
             else:
                 positions = self.model.ai_characters_movements(map, character)
@@ -66,11 +66,11 @@ class Game:
     # Function for moving the Player as the direction keys are pressed
     def moveKeyboard(self, window, map, houses):
 
-        x = self.model.player.x
-        y = self.model.player.y
+        x, y = self.model.player.x, self.model.player.y
 
         if map[y][x] == {13}:
-            self.model.reposition_character(self.model.player)
+            new_x, new_y = random.choice(self.model.reposition_character(map))
+            self.model.player.x, self.model.player.y = new_y, new_x
         else:
             player_positions = self.model.player_movements(map, houses)
             if player_positions:
