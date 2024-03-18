@@ -1,4 +1,6 @@
+# prop.py
 import pygame as pg
+
 
 class Prop:
     """
@@ -19,27 +21,7 @@ class Prop:
         self.can_overlap = can_overlap
         self.sprite = sprite
 
-    @property
-    def x(self):
-        """ X coordinate of the Prop."""
-        return self.position[0]
-
-    @x.setter
-    def x(self, value):
-        """ Sets the x coordinate of the Prop."""
-        self.position = (value, self.position[1])
-
-    @property
-    def y(self):
-        """ Y coordinate of the Prop."""
-        return self.position[1]
-
-    @y.setter
-    def y(self, value):
-        """ Sets the y coordinate of the Prop."""
-        self.position = (self.position[0], value)
-
-    def draw(self, window, image, position):
+    def draw(self, window):
         """
         Draws the Prop object on the Pygame window.
 
@@ -47,7 +29,6 @@ class Prop:
         image: Path to the object's image
         position: The x and y position where the object is drawn
         """
-
-        image = pg.image.load(image)
-        image_rect = image.get_rect(topleft=(position[0] * 16, position[1] * 16))
+        image = pg.image.load(self.sprite)
+        image_rect = image.get_rect(topleft=(self.position[0] * 16, self.position[1] * 16))
         window.blit(image, image_rect)

@@ -2,13 +2,14 @@ import pygame as pg
 from Model import Model
 import random
 
+
 class Game:
     def __init__(self):
         self.model = Model()
         # Images for the Player
-        self.player_textures = ["data/imgs/player_right.png", 
-                                "data/imgs/player_left.png", 
-                                "data/imgs/player_back.png", 
+        self.player_textures = ["data/imgs/player_right.png",
+                                "data/imgs/player_left.png",
+                                "data/imgs/player_back.png",
                                 "data/imgs/player_front.png"]
         # Images for the character
         self.character_textures = ["data/imgs/character_right.png",
@@ -21,10 +22,10 @@ class Game:
         for character in self.model.characters:
             x = character.x
             y = character.y
-            
+
             if map[y][x] == {13}:
-                self.model.reposition_character(character,map)
-            
+                self.model.reposition_character(character, map)
+
             else:
                 positions = self.model.ai_characters_movements(map, character)
 
@@ -63,16 +64,14 @@ class Game:
                     character.draw(window, character.image, (character.x, character.y))
                 
 
-
-   # Function for moving the Player as the direction keys are pressed 
+    # Function for moving the Player as the direction keys are pressed
     def moveKeyboard(self, window, map, houses):
 
         x = self.model.player.x
         y = self.model.player.y
 
         if map[y][x] == {13}:
-            self.model.reposition_character(self.model.player,map)
-
+            self.model.reposition_character(self.model.player, map)
         else:
             # get possible movements direction the player can make
             player_positions = self.model.player_movements(map, houses)
@@ -84,7 +83,6 @@ class Game:
                     if "W" in player_positions:
                         self.model.player.x -= 1
                         self.model.player.image = self.player_textures[1]
-                        self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
                     else:
                         print("Unreachable Zone")
 
@@ -92,7 +90,6 @@ class Game:
                     if "E" in player_positions:
                         self.model.player.x += 1
                         self.model.player.image = self.player_textures[0]
-                        self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
                     else:
                         print("Unreachable Zone")
 
@@ -100,7 +97,6 @@ class Game:
                     if "N" in player_positions:
                         self.model.player.y -= 1
                         self.model.player.image = self.player_textures[2]
-                        self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
                     else:
                         print("Unreachable Zone")
 
@@ -108,9 +104,10 @@ class Game:
                     if "S" in player_positions:
                         self.model.player.y += 1
                         self.model.player.image = self.player_textures[3]
-                        self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
+
                     else:
                         print("Unreachable Zone")
+                self.model.player.draw(window, self.model.player.image, self.model.player.position)
             else:
                 # In case you haven't pressed on the arrow buttons
                 print("Use the Direction keys / arrow keys")
