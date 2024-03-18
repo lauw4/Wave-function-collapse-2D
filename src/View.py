@@ -1,7 +1,6 @@
 import random
 from Model import Model
 from Play import Game
-from Sql import Database
 import pygame
 
 
@@ -47,7 +46,6 @@ class View:
         self.lands = None
         self.game = Game()
         self.model = Model()
-        self.database = Database()
 
         pygame.init()
         self.window = pygame.display.set_mode((50 * 16, 50 * 16))
@@ -95,11 +93,13 @@ class View:
                 house.draw(self.window)
 
             # Moving the Player and the AI character
-            if self.game.model.player.status:
-                self.game.moveKeyboard(self.window, model.wfc.grid, model.houses)
-
+            if self.game.model.player.status: # checks if the Player is alive
+                self.game.moveKeyboard(self.window, model.wfc.grid, model.houses) # Move it with keyboard
+            
+            # Random movements of the characters
             self.game.moveCharacter(self.window, model.wfc.grid)
-            self.game.delete_player_in_contact()
+            self.game.delete_player_in_contact() # delete player when in contact with character
+
             # Flip the Display of the game
             pygame.display.flip()
             # Smoothing the transactions

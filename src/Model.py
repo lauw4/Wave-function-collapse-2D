@@ -35,7 +35,7 @@ class Model:
         self.characters = [Character(position=(2, 2)),
                            Character(position=(15, 20)),
                            Character(position=(25, 30)),
-                           Character(position=(5, 35))]
+                           Character(position=(5, 30))]
         self.player = Player()
 
         self.trees = []
@@ -81,6 +81,17 @@ class Model:
                     self.wfc.grid[y][x] = random.choices(({12}, {14}, {15}), weights=[1, 5, 5], k=1)[0]
 
     def ai_characters_movements(self, map, character):
+        
+        """
+        Determines the possible movements for the given character based on the map.
+        
+        Args:
+            map: The map grid.
+            character: The character object.
+        
+        Returns:
+            list: List of directions indicating the possible movements.
+        """
         directions = []
 
         if map is not None:
@@ -89,7 +100,7 @@ class Model:
 
             if 0 <= x < len(map) and 0 <= y < len(map[0]):
                 # Check each of the eight neighboring cells
-                for dx in [-1, 0, 1]:
+                for dx in [-1, 0, 1]: 
                     for dy in [-1, 0, 1]:
                         if dx != 0 or dy != 0:  # Skip the current cell
                             new_x = x + dx
@@ -120,6 +131,17 @@ class Model:
 
     # Functions to give possible movements of the CHARACTER
     def player_movements(self, map, houses):
+
+        """
+        Determines the possible movements for the player based on the map and house positions.
+        
+        Args:
+            map: The map grid.
+            houses: List of house positions on the map.
+        
+        Returns:
+            list: List of directions indicating the possible movements.
+        """
         player_directions = []
 
         if map is not None:
@@ -132,9 +154,9 @@ class Model:
                 for dx, dy in [(0, -1), (0, 1), (-1, 0), (1, 0)]:
                     new_x = x + dx
                     new_y = y + dy
-
+                    # Check If the new position is on a house
                     if 0 <= new_x < len(map) and 0 <= new_y < len(map[0]):
-                        houses_array = [house.position for house in houses]
+                        houses_array = [house.position for house in houses] # Get house position on the map
                         if (new_x, new_y) not in houses_array:
                             if map[new_y][new_x] in [{12}, {14}, {15}]:
                                 # Determine the direction based on the relative position
