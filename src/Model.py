@@ -46,7 +46,8 @@ class Model:
         self.control_points = bz.generate_control_points(self.n_)
         self.curve = bz.bezier_curve(self.control_points, self.num_points)
         self.control_points2 = bz.generate_control_points(self.n_)
-        self.control_points2[0] = self.curve[random.randint(0, len(self.curve) - 1)]
+        index = random.randint(0, len(self.curve)-1)
+        self.control_points2[0] = self.curve[index]
         self.curve2 = bz.bezier_curve(self.control_points2, self.num_points)
 
     def add_water(self):
@@ -151,26 +152,44 @@ class Model:
         return player_directions
 
     def addTrees(self):
+        """
+        Adds trees to the map based on certain conditions.
 
+        tree_weights: Weights assigned to different tree textures.
+        tree_sprite: Selected tree sprite based on weighted random choice.
+        tree: Tree object with chosen sprite added to the list of trees.
+
+        map: 2D map grid to add trees to.
+        List of Tree objects added to the map.
+        """
         tree_weights = [10 if texture == self.tree_textures[0] else 1 for texture in self.tree_textures]
 
         for row_index, row in enumerate(self.wfc.grid):
             for col_index, cell in enumerate(row):
-                if cell == {12}:
-                    if random.random() < 0.2:
+                if cell == {12}:  # Assuming {12} is the code for an empty tile
+                    if random.random() < 0.2:  # Adjust probability as needed
                         tree_sprite = random.choices(self.tree_textures, weights=tree_weights, k=1)[0]
                         tree = Tree(position=(col_index, row_index), sprite=tree_sprite)
                         self.trees.append(tree)
         return self.trees
 
     def addHouses(self):
+        """
+        Adds houses to the map based on certain conditions.
 
+        house_weights: Weights assigned to different house textures.
+        house_sprite: Selected house sprite based on weighted random choice.
+        house: House object with chosen sprite added to the list of houses.
+
+        2D map grid to add houses to.
+        List of House objects added to the map.
+        """
         house_weights = [10 if texture == self.house_textures[0] else 1 for texture in self.house_textures]
 
         for row_index, row in enumerate(self.wfc.grid):
             for col_index, cell in enumerate(row):
-                if cell == {12} and cell not in self.trees:
-                    if random.random() < 0.05:
+                if cell == {12} and cell not in self.trees:  # Assuming {12} is the code for an empty tile
+                    if random.random() < 0.05:  # Adjust probability as needed
                         house_sprite = random.choices(self.house_textures, weights=house_weights, k=1)[0]
                         house = House(position=(col_index, row_index), sprite=house_sprite)
                         self.houses.append(house)

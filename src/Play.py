@@ -23,8 +23,7 @@ class Game:
             x, y = character.x, character.y
 
             if map[y][x] == {13}:
-                new_y,new_x = random.choice(self.model.reposition_character(map))
-                character.x, character.y = new_y, new_x
+                self.model.reposition_character(character)
 
             else:
                 positions = self.model.ai_characters_movements(map, character)
@@ -62,6 +61,7 @@ class Game:
                         character.image = self.character_textures[3]
                     # Draw the character after updating its position
                     character.draw(window, character.image, (character.x, character.y))
+                
 
     # Function for moving the Player as the direction keys are pressed
     def moveKeyboard(self, window, map, houses):
@@ -72,7 +72,10 @@ class Game:
             new_y, new_x = random.choice(self.model.reposition_character(map))
             self.model.player.x, self.model.player.y = new_y, new_x
         else:
+            # get possible movements direction the player can make
             player_positions = self.model.player_movements(map, houses)
+            # print(f'Player possible Positions:{player_positions}')
+            #self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
             if player_positions:
                 keys = pg.key.get_pressed()
                 if keys[pg.K_LEFT]:

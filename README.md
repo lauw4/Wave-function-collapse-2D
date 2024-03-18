@@ -47,8 +47,8 @@ The map and props in the game are generated using the wave collapse algorithm, e
 
 ## Credits
 
-This project was created by `Victor`, `Wael`, `Prince`.
+This project was created by Wael,Victor,Prince.
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the [MIT License].
