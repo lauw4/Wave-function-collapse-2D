@@ -32,8 +32,8 @@ class Controller:
             self.load("test3")  # Loads an existing map
 
         # Adds trees and houses to the map based on the WFC grid
-        self.model.addTrees(self.model.wfc.grid)
-        self.model.addHouses(self.model.wfc.grid)
+        self.model.addTrees()
+        self.model.addHouses()
 
         # Updates the view with the terrain changes and displays the map
         self.view.changeLand(self.model)
@@ -121,4 +121,4 @@ class Controller:
 # Create an instance of Controller and run the program
 c = Controller()
 c.run(isNewMap=True)
-# c.save()  # Uncomment to save the map to the database
+#c.save()  # Uncomment to save the map to the database

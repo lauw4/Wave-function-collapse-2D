@@ -24,7 +24,7 @@ class Game:
             y = character.y
 
             if map[y][x] == {13}:
-                self.model.reposition_character(character, map)
+                self.model.reposition_character(character)
 
             else:
                 positions = self.model.ai_characters_movements(map, character)
