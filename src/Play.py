@@ -77,7 +77,7 @@ class Game:
             # get possible movements direction the player can make
             player_positions = self.model.player_movements(map, houses)
             # print(f'Player possible Positions:{player_positions}')
-            self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
+            #self.model.player.draw(window, self.model.player.image, (self.model.player.x, self.model.player.y))
             if player_positions:
                 keys = pg.key.get_pressed()
                 if keys[pg.K_LEFT]:

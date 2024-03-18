@@ -29,8 +29,8 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 
 ## Credits
 
-This project was created by [Your Name].
+This project was created by Wael,Victor,Prince.
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the [MIT License].

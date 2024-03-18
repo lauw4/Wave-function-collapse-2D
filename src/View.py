@@ -31,6 +31,7 @@ class View:
         self.turn_cliff_WN_textures = ["LandsImg/turn_cliff_WN.png"]
         self.horizontal_path_textures = ["LandsImg/vertical_path.png"]
         self.vertical_path_textures = ["LandsImg/horizontal_path.png"]
+
         self.tree_textures = ["./data/imgs/props/trees_status/tree1.png",
                               "./data/imgs/props/trees_status/tree2.png",
                               "./data/imgs/props/trees_status/tree3.png",
