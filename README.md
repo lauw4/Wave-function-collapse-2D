@@ -8,6 +8,13 @@ The player can be controlled using direction keys, while the characters move ran
 
 The objective is for the player to avoid getting caught by the characters, as being caught will result in the player being deleted from the map.
 
+Here is the final result:
+
+<video width="640" height="360" controls>
+  <source src="ImgRM/Video_gameplay.mp4" type="video/mp4">
+</video>
+
+
 
 ## Installation
 
