@@ -84,21 +84,21 @@ class Game:
                         self.model.player.x -= 1
                         self.model.player.image = self.player_textures[1]
                     else:
-                        print("Unreachable Zone")
+                        print("You can't go in there !")
 
                 elif keys[pg.K_RIGHT]:
                     if "E" in player_positions:
                         self.model.player.x += 1
                         self.model.player.image = self.player_textures[0]
                     else:
-                        print("Unreachable Zone")
+                        print("You can't go in there !")
 
                 elif keys[pg.K_UP]:
                     if "N" in player_positions:
                         self.model.player.y -= 1
                         self.model.player.image = self.player_textures[2]
                     else:
-                        print("Unreachable Zone")
+                        print("You can't go in there !")
 
                 elif keys[pg.K_DOWN]:
                     if "S" in player_positions:
@@ -106,7 +106,7 @@ class Game:
                         self.model.player.image = self.player_textures[3]
 
                     else:
-                        print("Unreachable Zone")
+                        print("You can't go in there !")
                 self.model.player.draw(window, self.model.player.image, self.model.player.position)
             else:
                 # In case you haven't pressed on the arrow buttons
@@ -117,4 +117,4 @@ class Game:
         for character in self.model.characters:
             if self.model.player.x == character.x and self.model.player.y == character.y:
                 self.model.player.status = False
-                print("You Lost")
+                print("You Lost...")
