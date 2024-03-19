@@ -13,10 +13,8 @@ The objective is for the player to avoid getting caught by the characters, as be
 
 To run the game, make sure you have Python3 installed on your system. You can install the required libraries by running :
 
-```
- pip install pygame
- pip install bezier
-```
+>> pip install -r requirements.txt
+
 
 
 ## Usage
