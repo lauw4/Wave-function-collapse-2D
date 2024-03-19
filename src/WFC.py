@@ -162,7 +162,7 @@ class WFC2:
                 self.replace_square_tiles(13, 12)
                 final_images = self.get_final_grid_images()
                 grille_finale = self.creer_grille(final_images)
-                print("finished")
+                print("Ready")
                 grille_finale.save(save_filepath)
                 if show:
                     grille_finale.show()

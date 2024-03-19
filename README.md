@@ -31,6 +31,8 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 - If the player gets caught by a character, the game ends.
 - The objective is to survive as long as possible without getting caught.
 
+`Warning : if you can't see your character, please restart the game !`
+
 ## File Structure
 
 - `Controller.py`: Main Python script to run the game.
@@ -46,10 +48,9 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 ## Table of Contents
 1. [Land generation](#land-generation)
 2. [Added-props](#added-props)
-3. [Character](#character)
+3. [Characters](#characters)
 4. [Database](#database)
-5. [Problem encountered - Future improvements](#problem-encountered---future-improvements)
-6. [Conclusion](#conclusion)
+5. [Future improvements](#future-improvements)
    
 ## Division of task
 
@@ -66,15 +67,28 @@ To create a map, we generated terrain from different tiles. To have a coherent b
 The wave function collapse is the main algorithm of the land generation. It's this algorithm that tell which tiles is in which position based on its neighbors.
 
 Let's described it more in detail.
-#### SuDoKu problem
-In Sudoku, each cell in a 9x9 grid can hold a number between 1 and 9, but the rules of the game dictate that each number can only appear once in each row, column, and 3x3 subgrid. When you start a puzzle, some cells already have numbers in them. These are the ‘collapsed’ cells, as their value is already determined. The empty cells can be thought of as being in a state of superposition—they could be any number that doesn’t conflict with the existing numbers in the same row, column, or subgrid.
+#### SuDoKu problem 
+***
+In Sudoku, each cell in a 9x9 grid can hold a number between 1 and 9, but the rules of the game dictate that each number can only appear once in each row, column, and 3x3 subgrid. 
+
+When you start a puzzle, some cells already have numbers in them. 
+
+These are the ‘collapsed’ cells, as their value is already determined.
+
+The empty cells can be thought of as being in a state of superposition—they could be any number that doesn’t conflict with the existing numbers in the same row, column, or subgrid.
 
 ![Sudoku grid](ImgRM/sudoku_grid.png)
 
-As you deduce the numbers for the empty cells, the superposition collapses, and the possibilities for neighboring cells are affected. You eliminate potential states for the empty cells based on the rules until every cell collapses to a single value, solving the puzzle.
+As you deduce the numbers for the empty cells, the superposition collapses, and the possibilities for neighboring cells are affected. 
+You eliminate potential states for the empty cells based on the rules until every cell collapses to a single value, solving the puzzle.
 
 #### Tiles-based
-In WFC, a similar concept is applied to more complex sets of data, like tiles in our game map. You start with a grid where each cell can be in any state from a given set. Based on the rules or constraints, which can be akin to the Sudoku rules about numbers in rows, columns, and subgrids, you collapse the cells one by one. As each cell's state becomes certain, it influences its neighbors, reducing their possible states. The algorithm continues until all cells are collapsed, resulting in a coherent pattern that abides by the given rules.
+***
+In WFC, a similar concept is applied to more complex sets of data, like tiles in our game map. You start with a grid where each cell can be in any state from a given set. 
+
+Based on the rules or constraints, which can be akin to the Sudoku rules about numbers in rows, columns, and subgrids, you collapse the cells one by one. 
+
+As each cell's state becomes certain, it influences its neighbors, reducing their possible states. The algorithm continues until all cells are collapsed, resulting in a coherent pattern that abides by the given rules.
 
 If we take those tiles in 6x6 grid
 
@@ -104,6 +118,7 @@ Randomness makes the map totally chaotic. To remedy this, let's put a weight on 
 ![randomWeight](ImgRM/randomWeight.png)
 
 ### River
+***
 
 Now let's add a river to our map for that, we use a bezier curve from a side of the map to a other.
 
@@ -116,6 +131,7 @@ We can also make delta
 ![delta](ImgRM/delta.png)
 
 ### Roads
+***
 To add some life to our map, we add some roads scattered everywhere.
 
 ![road](ImgRM/road.png)
@@ -181,9 +197,11 @@ In this Game we use two types of characters
 - `Game` this is a class that handles the modements and combining with the Model of the game
 
 ### UML graphs
+***
 ![Image](ImgRM/c_p_uml.png)
 
-## Gameplay
+### Gameplay
+***
 
 - `Use the arrow keys (up, down, left, right)` to move the player.
 - Avoid getting caught by the characters moving randomly on the map.
@@ -245,17 +263,35 @@ Data retrieval is done by first selecting the `map_id` from the map name, then r
 
 ## Future Improvements
 
-- Make winning compicated (ex: more character, other moving threats)
-- Add more vibe in the map (ex: villages, forests, etc)
-- Ability to exceed the limits of the generated Map (extends as the player moves)
-  
-## Conclusion 
+Here are the improvements that could be added :
 
+- **Advanced Character Behaviors**: Introduce more sophisticated behaviors for characters, such as pathfinding algorithms for NPCs or interactive elements for the player to engage with.
+
+- **Map Generation Refinement**: Continuously improve the map generation algorithm to generate more diverse and detailed landscapes, possibly incorporating user-defined parameters for customization.
+
+- **Optimization and Performance**: Optimize code and algorithms to improve performance, especially for larger maps or complex interactions.
+
+- **Map Transitions**: Implement the ability for players to seamlessly transition between maps, akin to navigating to new areas by moving to the edges of the current map, as seen in games like Pokémon.
 
 
 ## Credits
 
-This project was created by Wael,Victor,Prince.
+This project was created by
+
+<a href="https://github.com/VictorFlattot"> 
+  Victor
+</a> 
+,
+<a href="https://github.com/jaja1808"> 
+  Prince
+</a>
+,
+<a href="https://github.com/lauw4"> 
+  Wael
+</a>
+.
+
+
 
 ## License
 
