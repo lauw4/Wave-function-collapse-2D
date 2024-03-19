@@ -1,10 +1,11 @@
-# Wave Collapse Map
+# 2D MAP Wave Fonction Collapse Game
 
-This project is a 2D map generator in Python3 that utilizes the wave collapse algorithm. It creates a game environment with a player and characters. The player can be controlled using direction keys, while the characters move randomly. The objective is for the player to avoid getting caught by the characters, as being caught will result in the player being deleted from the map.
+
 
 ## Installation
 
 To run the game, make sure you have Python3 installed on your system. You can install the required libraries by running:
+
 
 ## Usage
 
@@ -26,6 +27,38 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 - `map.py`: Contains classes and functions for generating the game map.
 - `character.py`: Contains classes for defining the player and characters.
 - `requirements.txt`: Specifies the required libraries for the project.
+
+
+## General presentation 
+
+This project is a 2D map generator in Python3 that utilizes the wave collapse algorithm. It creates a game environment with a player and characters. The player can be controlled using direction keys, while the characters move randomly. The objective is for the player to avoid getting caught by the characters, as being caught will result in the player being deleted from the map.
+
+## Our objective 
+
+
+## Each part according to each person in the group 
+
+
+## Land generation
+
+
+
+## Added props
+
+
+## Gameplay
+
+
+## Database
+
+## What was done ?
+
+
+## Conclusion 
+
+## Problem encountered / Future improvements
+
+
 
 ## Credits
 
