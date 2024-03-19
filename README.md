@@ -284,7 +284,7 @@ This project was created by
   Prince
 </a>
 ,
-<a href="https://github.com/https://github.com/lauw4"> 
+<a href="https://github.com/lauw4"> 
   Wael
 </a>
 .
