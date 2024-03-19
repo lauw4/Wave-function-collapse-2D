@@ -10,10 +10,8 @@ The objective is for the player to avoid getting caught by the characters, as be
 
 Here is the final result:
 
-<video width="640" height="360" controls>
-  <source src="ImgRM/Video_gameplay.mp4" type="video/mp4">
-</video>
 
+https://github.com/lauw4/Wave-function-collapse-2D/assets/128791947/d7bbd5da-e6db-4263-bae6-a287e2ff960b
 
 
 ## Installation
@@ -21,7 +19,6 @@ Here is the final result:
 To run the game, make sure you have Python3 installed on your system. You can install the required libraries by running :
 
 >> pip install -r requirements.txt
-
 
 
 ## Usage
