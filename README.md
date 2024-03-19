@@ -279,12 +279,15 @@ This project was created by
 <a href="https://github.com/VictorFlattot"> 
   Victor
 </a> 
-<a href="https://github.com/VictorFlattot"> 
+,
+<a href="https://github.com/jaja1808"> 
   Prince
-</a> 
-<a href="https://github.com/VictorFlattot"> 
+</a>
+,
+<a href="https://github.com/https://github.com/lauw4"> 
   Wael
-</a> 
+</a>
+.
 
 
 
