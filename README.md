@@ -195,9 +195,11 @@ In this Game we use two types of characters
 - `Game` this is a class that handles the modements and combining with the Model of the game
 
 ### UML graphs
+***
 ![Image](ImgRM/c_p_uml.png)
 
-## Gameplay
+### Gameplay
+***
 
 - `Use the arrow keys (up, down, left, right)` to move the player.
 - Avoid getting caught by the characters moving randomly on the map.
