@@ -71,7 +71,7 @@ class Game:
         y = self.model.player.y
 
         if map[y][x] == {13}:
-            self.model.reposition_character(self.model.player, map)
+            self.model.reposition_character(self.model.player)
         else:
             # get possible movements direction the player can make
             player_positions = self.model.player_movements(map, houses)
