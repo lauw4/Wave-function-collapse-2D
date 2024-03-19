@@ -87,7 +87,7 @@ Now let's collapse one of the tile
 
 When the tile collapses, its neighbors update and their possibilities are reduced.
 
-![second collapse](ImgRM/second_collapse.png)
+![second collapse](ImgRM/first_collapse.png)
 
 When the collapse of one cell reduces the possibilities of the cell in between, that cell collapses. Now, you can repeat these steps.
 
@@ -95,7 +95,7 @@ observation -> propagation -> collapse -> observation -> ...
 
 ![repeat](ImgRM/repeat.png)
 
-And if we use our tiles 
+And if we use our tiles
 
 ![random](ImgRM/random.png)
 
