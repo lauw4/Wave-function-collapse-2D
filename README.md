@@ -31,6 +31,8 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 - If the player gets caught by a character, the game ends.
 - The objective is to survive as long as possible without getting caught.
 
+`Warning : if you can't see your character, please restart the game !`
+
 ## File Structure
 
 - `Controller.py`: Main Python script to run the game.
@@ -46,7 +48,7 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 ## Table of Contents
 1. [Land generation](#land-generation)
 2. [Added-props](#added-props)
-3. [Character](#character)
+3. [Characters](#characters)
 4. [Database](#database)
 5. [Future improvements](#future-improvements)
    
