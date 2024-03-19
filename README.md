@@ -261,7 +261,11 @@ Data retrieval is done by first selecting the `map_id` from the map name, then r
 
 ## Credits
 
-This project was created by Wael,Victor,Prince.
+This project was created by
+<a href="https://github.com/OWNER/REPO/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=OWNER/REPO" />
+</a>
+Wael,Victor,Prince.
 
 ## License
 
