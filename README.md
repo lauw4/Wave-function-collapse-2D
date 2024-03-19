@@ -138,7 +138,7 @@ These props include trees and houses that are randomly placed during map generat
 
 The added props aim to make the game environment visually appealing and add extra interaction elements for the player.
 
-![Props UML Diagram](uml_props.png)
+![Props UML Diagram](ImgRM/uml_props.png)
 
 ### Houses
 ***
