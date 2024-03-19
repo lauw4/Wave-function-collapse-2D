@@ -65,16 +65,23 @@ To create a map, we generated terrain from different tiles. To have a coherent b
 The wave function collapse is the main algorithm of the land generation. It's this algorithm that tell which tiles is in which position based on its neighbors.
 
 Let's described it more in detail.
-#### SuDoKu problem
+#### SuDoKu problem 
+***
 In Sudoku, each cell in a 9x9 grid can hold a number between 1 and 9, but the rules of the game dictate that each number can only appear once in each row, column, and 3x3 subgrid. 
 
-When you start a puzzle, some cells already have numbers in them. These are the ‘collapsed’ cells, as their value is already determined. The empty cells can be thought of as being in a state of superposition—they could be any number that doesn’t conflict with the existing numbers in the same row, column, or subgrid.
+When you start a puzzle, some cells already have numbers in them. 
+
+These are the ‘collapsed’ cells, as their value is already determined.
+
+The empty cells can be thought of as being in a state of superposition—they could be any number that doesn’t conflict with the existing numbers in the same row, column, or subgrid.
 
 ![Sudoku grid](ImgRM/sudoku_grid.png)
 
-As you deduce the numbers for the empty cells, the superposition collapses, and the possibilities for neighboring cells are affected. You eliminate potential states for the empty cells based on the rules until every cell collapses to a single value, solving the puzzle.
+As you deduce the numbers for the empty cells, the superposition collapses, and the possibilities for neighboring cells are affected. 
+You eliminate potential states for the empty cells based on the rules until every cell collapses to a single value, solving the puzzle.
 
 #### Tiles-based
+***
 In WFC, a similar concept is applied to more complex sets of data, like tiles in our game map. You start with a grid where each cell can be in any state from a given set. 
 
 Based on the rules or constraints, which can be akin to the Sudoku rules about numbers in rows, columns, and subgrids, you collapse the cells one by one. 
@@ -109,6 +116,7 @@ Randomness makes the map totally chaotic. To remedy this, let's put a weight on 
 ![randomWeight](ImgRM/randomWeight.png)
 
 ### River
+***
 
 Now let's add a river to our map for that, we use a bezier curve from a side of the map to a other.
 
@@ -121,6 +129,7 @@ We can also make delta
 ![delta](ImgRM/delta.png)
 
 ### Roads
+***
 To add some life to our map, we add some roads scattered everywhere.
 
 ![road](ImgRM/road.png)
