@@ -85,6 +85,23 @@ Now let's collapse one of the tile
 
 ![first collapse](first_collapse.png)
 
+When the tile collapses, its neighbors update and their possibilities are reduced.
+
+![second collapse](second_collapse.png)
+
+When the collapse of one cell reduces the possibilities of the cell in between, that cell collapses. Now, you can repeat these steps.
+
+observation -> propagation -> collapse -> observation -> ...
+
+![repeat](repeat.png)
+
+And if we use our tiles 
+
+![random](random.png)
+
+Randomness makes the map totally chaotic. To remedy this, let's put a weight on the grass tile.
+
+![randomWeight](randomWeight.png)
 
 
 ## Added props
