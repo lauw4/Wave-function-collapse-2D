@@ -278,7 +278,7 @@ This project was created by
 
 Victor,Prince,Wael.
 
-</div>.photos {
+.photos {
   display: inline-block;
   position: relative;
   width: 200px;
