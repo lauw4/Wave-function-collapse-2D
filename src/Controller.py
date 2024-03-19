@@ -120,5 +120,5 @@ class Controller:
 
 # Create an instance of Controller and run the program
 c = Controller()
-c.run(isNewMap=True)
+c.run(isNewMap=False)
 #c.save()  # Uncomment to save the map to the database
