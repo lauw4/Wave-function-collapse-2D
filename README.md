@@ -153,6 +153,7 @@ In this Game we use two types of characters
 ## Gameplay
 
 - `Use the arrow keys (up, down, left, right)` to move the player.
+![Image](keys.jpg)
 - Avoid getting caught by the characters moving randomly on the map.
 - If the player gets caught by a character, the game ends.
 - The objective is to survive as long as possible without getting caught.
