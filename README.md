@@ -288,8 +288,8 @@ Victor,Prince,Wael.
 }
 
 <div class="photos">
-<a href=(https://github.com/VictorFlattot)"> 
-  <img href="(https://github.com/VictorFlattot.png)"> 
+<a href="https://github.com/VictorFlattot"> 
+  <img href="https://github.com/VictorFlattot.png"> 
 </a> 
 <div class="photos">
 <a href="Github Profile url"> 
