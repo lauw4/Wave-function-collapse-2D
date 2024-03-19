@@ -103,6 +103,21 @@ Randomness makes the map totally chaotic. To remedy this, let's put a weight on 
 
 ![randomWeight](randomWeight.png)
 
+### River
+
+Now let's add a river to our map for that, we use a bezier curve from a side of the map to a other.
+
+![bezier](bezier.png)
+![river](river.png)
+
+We can also make delta
+
+![delta](delta.png)
+
+### Roads
+To add some life to our map, we add some roads scattered everywhere.
+
+![road](road.png)
 
 ## Added props
 
