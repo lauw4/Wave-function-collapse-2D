@@ -48,9 +48,8 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 2. [Added-props](#added-props)
 3. [Character](#character)
 4. [Database](#database)
-5. [What was done finally](#what-was-done-finally)
-6. [Problem encountered - Future improvements](#problem-encountered---future-improvements)
-7. [Conclusion](#conclusion)
+5. [Problem encountered - Future improvements](#problem-encountered---future-improvements)
+6. [Conclusion](#conclusion)
    
 ## Division of task
 
@@ -193,14 +192,11 @@ __Data insertion into the database is done in two steps :__
 
 Data retrieval is done by first selecting the `map_id` from the map name, then retrieving the corresponding tiles from `lands_layer`.
 
-## What was done finally
 
-
-## Problem encountered - Future improvements
+## Future Improvements
 
 
 ## Conclusion 
-
 
 
 
