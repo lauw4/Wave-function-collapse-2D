@@ -277,30 +277,10 @@ Here are the improvements that could be added :
 This project was created by
 
 Victor,Prince,Wael.
-
-.photos {
-  display: inline-block;
-  position: relative;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-<div class="photos">
 <a href="https://github.com/VictorFlattot"> 
-  <img href="https://github.com/VictorFlattot.png"> 
+  Victor
 </a> 
-<div class="photos">
-<a href="Github Profile url"> 
-  <img href="Github profile image soure"> 
-</a> 
-<div class="photos">
-<a href="Github Profile url"> 
-  <img href="Github profile image source"> 
-</a> 
-<div class="photos">
-</div>
+
 
 
 ## License
