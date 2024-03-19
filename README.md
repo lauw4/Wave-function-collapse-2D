@@ -139,8 +139,23 @@ The choice of tree sprite is weighted, with a preference for certain variations 
 ![Fonctionnement visuel](added_props.png)
 
 
-## Character
-**
+## Characters
+In this Game we use two types of characters 
+- `Character` this is the mother class that can create a moving character in the map
+![Character](./data/imgs/character_front.png)
+- `Player` this is the controlled character(inherites from character) which is the Player in our game
+![Player](./data/imgs/player_front.png)
+- `Game` this is a class that handles the modements and combining with the Model of the game
+
+### UML graphs
+![Image](c_p_uml.png)
+
+## Gameplay
+
+- `Use the arrow keys (up, down, left, right)` to move the player.
+- Avoid getting caught by the characters moving randomly on the map.
+- If the player gets caught by a character, the game ends.
+- The objective is to survive as long as possible without getting caught.
 
 ## Database
 
