@@ -276,11 +276,19 @@ Here are the improvements that could be added :
 
 This project was created by
 
-Victor,Prince,Wael.
-
-<a href="https://github.com/lauw4/Wave-function-collapse-2D/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=lauw4/Wave-function-collapse-2D" />
+<a href="https://github.com/VictorFlattot"> 
+  Victor
+</a> 
+,
+<a href="https://github.com/jaja1808"> 
+  Prince
 </a>
+,
+<a href="https://github.com/lauw4"> 
+  Wael
+</a>
+.
+
 
 
 ## License
