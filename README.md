@@ -67,14 +67,20 @@ The wave function collapse is the main algorithm of the land generation. It's th
 
 Let's described it more in detail.
 #### SuDoKu problem
-In Sudoku, each cell in a 9x9 grid can hold a number between 1 and 9, but the rules of the game dictate that each number can only appear once in each row, column, and 3x3 subgrid. When you start a puzzle, some cells already have numbers in them. These are the ‘collapsed’ cells, as their value is already determined. The empty cells can be thought of as being in a state of superposition—they could be any number that doesn’t conflict with the existing numbers in the same row, column, or subgrid.
+In Sudoku, each cell in a 9x9 grid can hold a number between 1 and 9, but the rules of the game dictate that each number can only appear once in each row, column, and 3x3 subgrid. 
+
+When you start a puzzle, some cells already have numbers in them. These are the ‘collapsed’ cells, as their value is already determined. The empty cells can be thought of as being in a state of superposition—they could be any number that doesn’t conflict with the existing numbers in the same row, column, or subgrid.
 
 ![Sudoku grid](ImgRM/sudoku_grid.png)
 
 As you deduce the numbers for the empty cells, the superposition collapses, and the possibilities for neighboring cells are affected. You eliminate potential states for the empty cells based on the rules until every cell collapses to a single value, solving the puzzle.
 
 #### Tiles-based
-In WFC, a similar concept is applied to more complex sets of data, like tiles in our game map. You start with a grid where each cell can be in any state from a given set. Based on the rules or constraints, which can be akin to the Sudoku rules about numbers in rows, columns, and subgrids, you collapse the cells one by one. As each cell's state becomes certain, it influences its neighbors, reducing their possible states. The algorithm continues until all cells are collapsed, resulting in a coherent pattern that abides by the given rules.
+In WFC, a similar concept is applied to more complex sets of data, like tiles in our game map. You start with a grid where each cell can be in any state from a given set. 
+
+Based on the rules or constraints, which can be akin to the Sudoku rules about numbers in rows, columns, and subgrids, you collapse the cells one by one. 
+
+As each cell's state becomes certain, it influences its neighbors, reducing their possible states. The algorithm continues until all cells are collapsed, resulting in a coherent pattern that abides by the given rules.
 
 If we take those tiles in 6x6 grid
 
