@@ -35,10 +35,13 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 
 ## File Structure
 
-- `main.py`: Main Python script to run the game.
+- `Controller.py`: Main Python script to run the game.
+- `WFC.py`: Contains classes and functions for generating the game map.
 - `character.py`: Contains classes for defining the player and characters.
-- ...
-
+- `Model.py`: Handles the backend tasks.
+- `Props.py`,`Tree.py` and `Houses`: Contains classes for defining Trees and houses in the map
+- `View.py`: Main Visualization( frontend) of the game.
+- `requirements.txt`: Specifies the required libraries for the project.
 
 # Report
 
