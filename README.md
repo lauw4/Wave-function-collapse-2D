@@ -78,9 +78,12 @@ As you deduce the numbers for the empty cells, the superposition collapses, and 
 In WFC, a similar concept is applied to more complex sets of data, like tiles in our game map. You start with a grid where each cell can be in any state from a given set. Based on the rules or constraints, which can be akin to the Sudoku rules about numbers in rows, columns, and subgrids, you collapse the cells one by one. As each cell's state becomes certain, it influences its neighbors, reducing their possible states. The algorithm continues until all cells are collapsed, resulting in a coherent pattern that abides by the given rules.
 
 If we take those tiles in 6x6 grid
+
 ![all tiles](all_tiles.png)
+
 As we can see all the grid can be any tiles
 Now let's collapse one of the tile
+
 ![first collapse](first_collapse.png)
 
 
