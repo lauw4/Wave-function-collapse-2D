@@ -7,6 +7,13 @@ import pygame
 
 class View:
     def __init__(self):
+        """
+        Initializes the View class, setting up the window for displaying the game and loading texture assets.
+
+        This constructor loads various textures for different game elements (e.g., grass, roads, water, cliffs)
+        and initializes the game environment, including the pygame window, the game's model, and the database.
+        It sets the dimensions of the pygame display window and titles it 'WFC Test'.
+        """
         self.grass_textures = ["LandsImg/grass2.png",
                                "LandsImg/grass2_1.png",
                                "LandsImg/grass2_2.png"]
@@ -54,6 +61,16 @@ class View:
         pygame.display.set_caption('WFC Test')
 
     def changeLand(self, m):
+        """
+        Applies textures to the grid based on the cell values determined by the WFC algorithm.
+
+        Parameters:
+        - m: An object containing the WFC grid attribute that specifies the land type for each cell.
+
+        The method iterates over the WFC grid, replacing numerical land types with corresponding textures.
+        It applies different textures for various land types such as grass, roads, water, and cliffs, based
+        on predefined conditions. The resulting grid of textures is stored in self.lands.
+        """
         grass_weights = [10 if texture == self.grass_textures[0] else 1 for texture in self.grass_textures]
 
         terrain_grid = [[random.choices(self.grass_textures, weights=grass_weights, k=1)[0] if land == {12}
@@ -77,6 +94,16 @@ class View:
         self.lands = [[pygame.image.load(path).convert() for path in row] for row in terrain_grid]
 
     def displayMap(self, model):
+        """
+        Displays the game map and all interactive elements, handling game events.
+
+        Parameters:
+        - model: The game model containing elements to be displayed, such as trees and houses.
+
+        This method continuously updates the game window to display the map, interactive elements
+        (trees and houses), and handle player and AI movement. It listens for the quit event to
+        stop the game loop. The map display is updated at a rate of 30 frames per second.
+        """
         running = True
 
         while running:

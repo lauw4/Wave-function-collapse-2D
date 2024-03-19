@@ -7,7 +7,19 @@ from House import House
 
 
 class Model:
+
     def __init__(self, n=20):
+        """
+        Initializes the Model class that represents the game world's state.
+
+        Parameters:
+        - n (int): The dimension of the square grid that forms the game world.
+
+        The constructor initializes the game world with a specific grid size,
+        loads textures for trees and houses, and creates characters and player
+        with initial positions. It also initializes Bezier curves to model
+        terrain features like water bodies.
+        """
 
         self.tree_textures = ["./data/imgs/props/trees_status/tree1.png",
                               "./data/imgs/props/trees_status/tree2.png",
@@ -42,6 +54,13 @@ class Model:
         self.houses = []
 
     def init_curve(self):
+        """
+        Initializes Bezier curves for generating terrain features such as rivers.
+
+        This method generates control points and calculates Bezier curves that will
+        be used to shape terrain features across the game world grid. It supports
+        creating complex landscape designs via multiple curves.
+        """
         self.num_points = 100
         self.control_points = bz.generate_control_points(self.n_)
         self.curve = bz.bezier_curve(self.control_points, self.num_points)
@@ -51,6 +70,12 @@ class Model:
         self.curve2 = bz.bezier_curve(self.control_points2, self.num_points)
 
     def add_water(self):
+        """
+        Adds water terrain to the game world based on Bezier curves.
+
+        This method iterates over the game world grid and designates cells as water
+        if they fall below the defined Bezier curves, creating river-like features.
+        """
         for y in range(self.n_):
             for x in range(self.n_):
                 if bz.is_below_curve([x, y], self.curve, 2) or bz.is_below_curve([x, y], self.curve2, 2):
@@ -61,6 +86,15 @@ class Model:
                     self.wfc.update_neighbors(y, x)
 
     def add_road(self, nb_road):
+        """
+        Adds road paths between randomly chosen points in the game world.
+
+        Parameters:
+        - nb_road (int): The number of roads to generate.
+
+        Roads are generated through a random walk from one point to another and
+        can overwrite certain terrain types with road cells.
+        """
         for i in range(nb_road):
             A, B = (random.randint(0, self.n_ - 1), random.randint(0, self.n_ - 1)), \
                 (random.randint(0, self.n_ - 1), random.randint(0, self.n_ - 1))
@@ -81,6 +115,17 @@ class Model:
                     self.wfc.grid[y][x] = random.choices(({12}, {14}, {15}), weights=[1, 5, 5], k=1)[0]
 
     def ai_characters_movements(self, map, character):
+        """
+        Determines possible movement directions for AI characters based on the current map state.
+
+        Parameters:
+        - map: The current state of the game world grid.
+        - character: The character for which to determine possible movements.
+
+        Returns:
+        A list of strings representing possible directions the character can move, taking
+        into account the terrain and obstacles.
+        """
         directions = []
 
         if map is not None:
@@ -120,6 +165,17 @@ class Model:
 
     # Functions to give possible movements of the CHARACTER
     def player_movements(self, map, houses):
+        """
+        Determines possible movement directions for the player character.
+
+        Parameters:
+        - map: The current state of the game world grid.
+        - houses: A list of house objects to consider as obstacles.
+
+        Returns:
+        A list of strings representing possible directions the player can move, avoiding houses
+        and considering the terrain.
+        """
         player_directions = []
 
         if map is not None:
@@ -196,6 +252,17 @@ class Model:
         return self.houses
 
     def reposition_character(self, char):
+        """
+        Repositions a character to a non-water cell in the game world.
+
+        This method iterates over the game world grid to find the first cell that is not water
+        (represented by the value 12) and updates the character's position to this cell. This
+        is useful for ensuring characters do not spawn in water at the start of the game.
+
+        Parameters:
+        - char: The character to be repositioned. This character object should have a 'position'
+                attribute that can be set to a new (row, col) tuple indicating the new position.
+        """
         for row_index, row in enumerate(self.wfc.grid):
             for col_index, cell in enumerate(row):
                 if cell in {12}:
