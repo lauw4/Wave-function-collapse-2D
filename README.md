@@ -278,9 +278,29 @@ This project was created by
 
 Victor,Prince,Wael.
 
-<a href="https://github.com/lauw4/Wave-function-collapse-2D/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=lauw4/Wave-function-collapse-2D" />
-</a>
+</div>.photos {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+<div class="photos">
+<a href=(https://github.com/VictorFlattot)"> 
+  <img href="(https://github.com/VictorFlattot.png)"> 
+</a> 
+<div class="photos">
+<a href="Github Profile url"> 
+  <img href="Github profile image soure"> 
+</a> 
+<div class="photos">
+<a href="Github Profile url"> 
+  <img href="Github profile image source"> 
+</a> 
+<div class="photos">
+</div>
 
 
 ## License
