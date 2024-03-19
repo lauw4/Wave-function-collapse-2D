@@ -1,7 +1,6 @@
 import random
 from Model import Model
 from Play import Game
-from Sql import Database
 import pygame
 
 
@@ -54,7 +53,7 @@ class View:
         self.lands = None
         self.game = Game()
         self.model = Model()
-        self.database = Database()
+
 
         pygame.init()
         self.window = pygame.display.set_mode((50 * 16, 50 * 16))
