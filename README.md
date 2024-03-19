@@ -189,6 +189,7 @@ In this Game we use two types of characters
 - Avoid getting caught by the characters moving randomly on the map.
 - If the player gets caught by a character, the game ends.
 - The objective is to survive as long as possible without getting caught.
+  
 ![Image](ImgRM/keys.jpg)
 
 ## Database
@@ -244,7 +245,10 @@ Data retrieval is done by first selecting the `map_id` from the map name, then r
 
 ## Future Improvements
 
-
+- Make winning compicated (ex: more character, other moving threats)
+- Add more vibe in the map (ex: villages, forests, etc)
+- Ability to exceed the limits of the generated Map (extends as the player moves)
+  
 ## Conclusion 
 
 
