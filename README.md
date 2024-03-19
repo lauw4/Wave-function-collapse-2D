@@ -48,8 +48,7 @@ Once the game is running, you can control the player using the arrow keys. Avoid
 2. [Added-props](#added-props)
 3. [Character](#character)
 4. [Database](#database)
-5. [Problem encountered - Future improvements](#problem-encountered---future-improvements)
-6. [Conclusion](#conclusion)
+5. [Future improvements](#future-improvements)
    
 ## Division of task
 
@@ -251,12 +250,15 @@ Data retrieval is done by first selecting the `map_id` from the map name, then r
 
 ## Future Improvements
 
-- Make winning compicated (ex: more character, other moving threats)
-- Add more vibe in the map (ex: villages, forests, etc)
-- Ability to exceed the limits of the generated Map (extends as the player moves)
-  
-## Conclusion 
+Here are the improvements that could be added :
 
+- **Advanced Character Behaviors**: Introduce more sophisticated behaviors for characters, such as pathfinding algorithms for NPCs or interactive elements for the player to engage with.
+
+- **Map Generation Refinement**: Continuously improve the map generation algorithm to generate more diverse and detailed landscapes, possibly incorporating user-defined parameters for customization.
+
+- **Optimization and Performance**: Optimize code and algorithms to improve performance, especially for larger maps or complex interactions.
+
+- **Map Transitions**: Implement the ability for players to seamlessly transition between maps, akin to navigating to new areas by moving to the edges of the current map, as seen in games like Pokémon.
 
 
 ## Credits
